@@ -17,15 +17,15 @@ public class DetailSubmitServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Answer answer = new Answer();
-		answer.content = request.getParameter("content");
-		answer.username = ((User) request.getSession().getAttribute("user")).username;
-		answer.d_id = Integer.parseInt(request.getParameter("id").toString());
+		answer.setContent(request.getParameter("content"));
+		answer.setUsername(((User) request.getSession().getAttribute("user")).getUsername());
+		answer.setD_id(Integer.parseInt(request.getParameter("id").toString()));
 		
-		System.out.println(answer.content+","+answer.username+","+answer.d_id );
+		System.out.println(answer.getContent()+","+answer.getUsername()+","+answer.getD_id() );
 		
 		AnswerService answerService = new AnswerService();
 		answerService.AddAnswer(answer);
-		request.getRequestDispatcher("/DetailServlet?id="+answer.d_id).forward(request, response);
+		request.getRequestDispatcher("/DetailServlet?id="+answer.getD_id()).forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

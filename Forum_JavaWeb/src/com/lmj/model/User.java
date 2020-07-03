@@ -2,10 +2,10 @@ package com.lmj.model;
 
 public class User {
 
-	public int id;
-	public String username;
-	public String password;
-	public String phonenum;
+	private Integer id;
+	private String username;
+	private String password;
+	private String phonenum;
 
 	public String getPhonenum() {
 		return phonenum;

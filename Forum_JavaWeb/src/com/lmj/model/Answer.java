@@ -1,9 +1,10 @@
 package com.lmj.model;
 
 public class Answer {
-	public int d_id;
-	public String content;
-	public String username;
+	private Integer d_id;
+	private String content;
+	private String username;
+	
 	public int getD_id() {
 		return d_id;
 	}

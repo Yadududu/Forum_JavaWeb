@@ -19,10 +19,10 @@ public class LoginServlet extends HttpServlet {
 
 		User user = new User();
 		UserService userService = new UserService();
-		user.username = request.getParameter("username");
-		user.password = request.getParameter("password");
+		user.setUsername(request.getParameter("username"));
+		user.setPassword(request.getParameter("password"));
 		int userID = userService.FindUser(user);
-		user.id = userID;
+		user.setId(userID);
 		
 		if (userID!=0) {
 			System.out.println("LoginSuccess");

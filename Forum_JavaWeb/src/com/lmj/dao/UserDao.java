@@ -38,7 +38,7 @@ public class UserDao {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		} finally {
-//			MySqlUtil.close(con, ps, rs);
+//			MySqlUtil.close(con, ps, rs);//使用QueryRunner,不用关闭
 //		}
 //		return false;
 		
@@ -50,8 +50,6 @@ public class UserDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
-			MySqlUtil.Close(con, ps, rs);
 		}
 		return temp;
 	}
@@ -64,8 +62,6 @@ public class UserDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
-			MySqlUtil.Close(con, ps, rs);
 		}
 		if(temp!=null) {
 			return true;
@@ -107,8 +103,6 @@ public class UserDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
-			MySqlUtil.Close(con, ps, rs);
 		}
 		return temp==0?false:true;
 	}
@@ -146,8 +140,6 @@ public class UserDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
-			MySqlUtil.Close(con, ps, rs);
 		}
 		return temp==0?false:true;
 	}

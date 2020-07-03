@@ -35,9 +35,9 @@ public class RegisterServlet extends HttpServlet {
 			return;
 		}
 		if (password != "" & password.equals(checkPassword)) {
-			user.password = password;
-			user.username = username;
-			user.phonenum = phonenum;
+			user.setPassword(password);
+			user.setUsername(username);
+			user.setPhonenum(phonenum);
 		} else {
 			System.out.println("RegisterFile");
 			request.setAttribute("registerError", "确认密码与设置密码不匹配!");

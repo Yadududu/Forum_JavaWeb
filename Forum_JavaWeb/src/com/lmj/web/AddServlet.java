@@ -16,12 +16,12 @@ public class AddServlet extends HttpServlet {
 	//Ìí¼ÓÌû×Ó
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Data data = new Data();
-		data.title = request.getParameter("title");
-		data.content = request.getParameter("content");
-		data.ansnum = "0";
+		data.setTitle(request.getParameter("title"));
+		data.setContent(request.getParameter("content"));
+		data.setAnsnum("0");
 		User user = (User) request.getSession().getAttribute("user");
 //		System.out.println(user.username);
-		data.u_id = user.id;
+		data.setU_id(user.getId());
 //		System.out.println(data.u_id);
 		
 		DataService dataService = new DataService();

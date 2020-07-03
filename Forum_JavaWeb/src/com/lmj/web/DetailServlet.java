@@ -27,9 +27,9 @@ public class DetailServlet extends HttpServlet {
 		DataService dataService = new DataService();
 		Data data = dataService.GetData(dataID);
 		
-		request.setAttribute("title", data.title);
-		request.setAttribute("content", data.content);
-		request.setAttribute("username", data.username);
+		request.setAttribute("title", data.getTitle());
+		request.setAttribute("content", data.getContent());
+		request.setAttribute("username", data.getUsername());
 		request.setAttribute("answers", answers);
 		request.getRequestDispatcher("/detail.jsp").forward(request, response);
 		

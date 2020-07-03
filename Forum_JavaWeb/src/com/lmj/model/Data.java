@@ -2,12 +2,12 @@ package com.lmj.model;
 
 public class Data {
 
-	public String title;
-	public String content;
-	public String ansnum;
-	public Integer u_id;
-	public String username;
-	public Integer id;
+	private String title;
+	private String content;
+	private String ansnum;
+	private Integer u_id;
+	private String username;
+	private Integer id;
 
 	public Integer getId() {
 		return id;

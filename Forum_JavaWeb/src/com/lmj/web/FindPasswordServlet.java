@@ -29,9 +29,9 @@ public class FindPasswordServlet extends HttpServlet {
 			return;
 		}
 		if (password != "" & password.equals(checkPassword)) {
-			user.password = password;
-			user.username = username;
-			user.phonenum = phonenum;
+			user.setPassword(password);
+			user.setUsername(username);
+			user.setPhonenum(phonenum);
 		} else {
 			System.out.println("FindPasswordFile");
 			request.setAttribute("findPasswordError", "确认密码与设置密码不匹配!");

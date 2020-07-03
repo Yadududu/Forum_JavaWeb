@@ -53,7 +53,7 @@ public class DataDao {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}finally {
-//			MySqlUtil.close(con, ps, rs);
+//			MySqlUtil.close(con, ps, rs);//使用QueryRunner,不用关闭
 //		}
 		
 		
@@ -66,8 +66,6 @@ public class DataDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
-			MySqlUtil.Close(con, ps, rs);
 		}
 		return datas;
 	}
@@ -91,7 +89,7 @@ public class DataDao {
 		String sql = "insert into data(title,content,ansnum,u_id) value(?,?,?,?);";
 		int temp = 0;
 		try {
-			temp = runner.update(sql,  data.title, data.content, data.ansnum, data.u_id);
+			temp = runner.update(sql,  data.getTitle(), data.getContent(), data.getAnsnum(), data.getU_id());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -103,11 +101,11 @@ public class DataDao {
 		String sql = "SELECT * FROM data where title=? and content=? and u_id=?;";
 		Data d = new Data();
 		try {
-			d = runner.query(sql, new BeanHandler<Data>(Data.class), data.title,data.content,data.u_id);
+			d = runner.query(sql, new BeanHandler<Data>(Data.class), data.getTitle(),data.getContent(),data.getU_id());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return d.id;
+		return d.getId();
 	}
 }

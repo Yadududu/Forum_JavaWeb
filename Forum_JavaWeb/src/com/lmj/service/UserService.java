@@ -10,7 +10,7 @@ public class UserService {
 		UserDao userDao = new UserDao();
 		User u = userDao.FindUser(user);
 		if(u!=null) {
-			return u.id;
+			return u.getId();
 		}else {
 			return 0;
 		}
