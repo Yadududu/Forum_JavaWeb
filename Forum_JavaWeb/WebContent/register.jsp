@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>注册</title>
 <link rel="stylesheet" type="text/css" href="css/login.css" />
 <link rel="stylesheet" href="css/head.css" />
 <link rel="stylesheet" type="text/css" href="css/login.css" />
@@ -84,7 +84,7 @@ function verifyPhonenum(){
 			if(msg.isSuccess){
 				$("#phoneMsg").html("");
 			}else{
-				$("#phoneMsg").html("<font color='red'>手机号码不能为空!</font>");
+				$("#phoneMsg").html("<font color='red'>手机号码有误，请重填!</font>");
 			}
 		}
 	});
@@ -106,25 +106,25 @@ function verifyPhonenum(){
 			method="post">
 			<div class="register-box">
 				<label for="username" class="username_label"> 用 户 名 
-					<input maxlength="20" name="username" type="text" placeholder="您的用户名和登录名" />
+					<input maxlength="20" name="username" type="text" placeholder="用 户 名" />
 				</label>
 				<div class="tips" id="usernameMsg"></div>
 			</div>
 			<div class="register-box">
 				<label for="username" class="other_label"> 设 置 密 码
-					<input maxlength="20" type="password" name="password" placeholder="建议至少使用两种字符组合" />
+					<input maxlength="20" type="password" name="password" placeholder="设 置 密 码" />
 				</label>
 				<div class="tips" id="passwordMsg"></div>
 			</div>
 			<div class="register-box">
 				<label for="username" class="other_label"> 确 认 密 码
-					<input maxlength="20" type="password" name="checkPassword" placeholder="请再次输入密码" />
+					<input maxlength="20" type="password" name="checkPassword" placeholder="确 认 密 码" />
 				</label>
 				<div class="tips" id="checkPasswordMsg"></div>
 			</div>
 			<div class="register-box">
 				<label for="username" class="username_label"> 手 机 号
-					<input maxlength="20" name="phonenum" type="text" placeholder="您的手机号" />
+					<input maxlength="20" name="phonenum" type="text" placeholder="手 机 号" />
 				</label>
 				<div class="tips" name="phoneMsg" id="phoneMsg" Style="color: red">${registerError }</div>
 				<div class="tips" name="error" Style="color: red"></div>

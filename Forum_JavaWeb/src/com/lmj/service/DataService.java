@@ -22,4 +22,9 @@ public class DataService {
 		dataDao.AddData(data);
 		return dataDao.GetID(data);
 	}
+	public void UpdateAnsnum(Integer id) {
+		DataDao dataDao = new DataDao();
+		Data data = GetData(id);
+		dataDao.UpdateAnsnum(id,data.getAnsnum()+1);
+	}
 }

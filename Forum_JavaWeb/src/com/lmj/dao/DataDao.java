@@ -84,7 +84,7 @@ public class DataDao {
 	}
 
 
-	public boolean AddData(Data data) {
+	public int AddData(Data data) {
 		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
 		String sql = "insert into data(title,content,ansnum,u_id) value(?,?,?,?);";
 		int temp = 0;
@@ -94,7 +94,7 @@ public class DataDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return temp==0?false:true;
+		return temp;
 	}
 	public int GetID(Data data) {
 		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
@@ -107,5 +107,18 @@ public class DataDao {
 			e.printStackTrace();
 		}
 		return d.getId();
+	}
+
+	public int UpdateAnsnum(Integer id, int ansnum) {
+		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
+		String sql = "update data set ansnum=? where id=?;";
+		int temp = 0;
+		try {
+			temp = runner.update(sql, ansnum, id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return temp;
 	}
 }

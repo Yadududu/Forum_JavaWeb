@@ -26,16 +26,16 @@ public class AnswerDao {
 		return answers;
 	}
 
-	public boolean AddAnswer(Answer answer) {
+	public int AddAnswer(Answer answer) {
 		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
-		String sql = "insert into answer(content,username,d_id) value(?,?,?);";
+		String sql = "insert into answer(content,u_id,d_id) value(?,?,?);";
 		int temp = 0;
 		try {
-			temp = runner.update(sql, answer.getContent(),answer.getUsername(),answer.getD_id());
+			temp = runner.update(sql, answer.getContent(),answer.getU_id(),answer.getD_id());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return temp==0?false:true;
+		return temp;
 	}
 }

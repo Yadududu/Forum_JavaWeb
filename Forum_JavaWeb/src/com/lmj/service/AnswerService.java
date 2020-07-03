@@ -14,7 +14,8 @@ public class AnswerService {
 
 	public boolean AddAnswer(Answer answer) {
 		AnswerDao answerDao = new AnswerDao();
-		return answerDao.AddAnswer(answer);
+		int temp = answerDao.AddAnswer(answer);
+		return temp==0?false:true;
 	}
 
 }

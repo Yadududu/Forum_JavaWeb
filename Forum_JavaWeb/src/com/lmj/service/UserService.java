@@ -6,9 +6,9 @@ import com.sun.org.apache.xml.internal.resolver.helpers.Debug;
 
 public class UserService {
 
-	public int FindUser(User user) {
+	public int FindUserId(User user) {
 		UserDao userDao = new UserDao();
-		User u = userDao.FindUser(user);
+		User u = userDao.FindUserId(user);
 		if(u!=null) {
 			return u.getId();
 		}else {
@@ -17,7 +17,8 @@ public class UserService {
 	}
 	public boolean FindUser(String username) {
 		UserDao userDao = new UserDao();
-		if(userDao.FindUser(username)) {
+		User user = userDao.FindUser(username);
+		if(user!=null) {
 			return true;
 		}else {
 			return false;
@@ -26,12 +27,25 @@ public class UserService {
 
 	public boolean RegisterUser(User user) {
 		UserDao userDao = new UserDao();
-		return userDao.InsertUser(user);
+		User u = userDao.FindUserId(user);
+		if(u==null) {
+			userDao.InsertUser(user);
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 	public Boolean UpdateUser(User user) {
 		UserDao userDao = new UserDao();
-		return userDao.UpdateUser(user);
+		int temp = userDao.UpdateUser(user);
+		return temp==0?false:true;
+	}
+	
+	public String FindUsername(Integer id) {
+		UserDao userDao = new UserDao();
+		User user= userDao.FindUsername(id);
+		return user.getUsername();
 	}
 
 }

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.lmj.model.Answer;
 import com.lmj.model.User;
 import com.lmj.service.AnswerService;
+import com.lmj.service.DataService;
+import com.lmj.service.UserService;
 
 //@WebServlet("/DetailSubmitServlet")
 public class DetailSubmitServlet extends HttpServlet {
@@ -18,13 +20,18 @@ public class DetailSubmitServlet extends HttpServlet {
 		
 		Answer answer = new Answer();
 		answer.setContent(request.getParameter("content"));
-		answer.setUsername(((User) request.getSession().getAttribute("user")).getUsername());
+		answer.setU_id(((User) request.getSession().getAttribute("user")).getId());
 		answer.setD_id(Integer.parseInt(request.getParameter("id").toString()));
 		
-		System.out.println(answer.getContent()+","+answer.getUsername()+","+answer.getD_id() );
+//		System.out.println(answer.getContent()+","+answer.getUsername()+","+answer.getD_id() );
 		
 		AnswerService answerService = new AnswerService();
 		answerService.AddAnswer(answer);
+		
+		//»Ø´ðÊý¼Ó1
+		DataService dataService = new DataService();
+		dataService.UpdateAnsnum(answer.getD_id());
+		
 		request.getRequestDispatcher("/DetailServlet?id="+answer.getD_id()).forward(request, response);
 	}
 

@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>小小论坛</title>
 <meta charset="utf-8" />
 <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
@@ -33,8 +34,8 @@
 		</div>
 		<div class="dvtabhead">
 			<div class="tabheads tabcurrent">全部帖子</div>
-			<div class="tabheads">我的帖子</div>
-			<div class="tabheads">我的关注</div>
+<!-- 			<div class="tabheads">我的帖子</div> -->
+<!-- 			<div class="tabheads">我的关注</div> -->
 		</div>
 		<div class="tabContent">
 			<div class="tab">
@@ -46,9 +47,6 @@
 						</div>
 						<div class="quesContent">
 							<div class="quesTitle">
-								500
-								<image src="images/bean.jpg" class="bean"> <span
-									class="spanques">
 									<a href="${pageContext.request.contextPath }/DetailServlet?id=${data.id }"> 
 									${data.title }</a></span>
 							</div>
@@ -77,76 +75,9 @@
 		<div>
 			<buton class="btnques" onclick="location.href='add.jsp'">提个问题</buton>
 		</div>
-		<div class="dvorder">
-			<div class="orderTitle">专家排行榜</div>
-			<div class="users">
-				<image class="userface" src="images/0.gif" />
-				<div class="dvuser">
-					<div class="userTitle">陈有龙</div>
-					<div class="userdeital">大牛6级 豆:14006</div>
-				</div>
-			</div>
-			<div class="users">
-				<image class="userface" src="images/1.gif" />
-				<div class="dvuser">
-					<div class="userTitle">陈有龙</div>
-					<div class="userdeital">大牛6级 豆:14006</div>
-				</div>
-			</div>
-			<div class="users">
-				<image class="userface" src="images/2.gif" />
-				<div class="dvuser">
-					<div class="userTitle">陈有龙</div>
-					<div class="userdeital">大牛6级 豆:14006</div>
-				</div>
-			</div>
-			<div class="users">
-				<image class="userface" src="images/3.gif" />
-				<div class="dvuser">
-					<div class="userTitle">陈有龙</div>
-					<div class="userdeital">大牛6级 豆:14006</div>
-				</div>
-			</div>
-			<div class="users">
-				<image class="userface" src="images/4.gif" />
-				<div class="dvuser">
-					<div class="userTitle">陈有龙</div>
-					<div class="userdeital">大牛6级 豆:14006</div>
-				</div>
-			</div>
-			<div class="users">
-				<image class="userface" src="images/5.gif" />
-				<div class="dvuser">
-					<div class="userTitle">陈有龙</div>
-					<div class="userdeital">大牛6级 豆:14006</div>
-				</div>
-			</div>
-			<div class="users">
-				<image class="userface" src="images/6.gif" />
-				<div class="dvuser">
-					<div class="userTitle">陈有龙</div>
-					<div class="userdeital">大牛6级 豆:14006</div>
-				</div>
-			</div>
-
-
-		</div>
-
 	</div>
 
 </div>
-<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript">
-	$(function() {
-
-		$(".tabheads").click(
-				function() {
-					$(".tabheads").removeClass("tabcurrent")
-							.eq($(this).index()).addClass("tabcurrent");
-					$(".tab").hide().eq($(this).index()).show();
-				});
-	});
-</script>
 <body>
 </body>
 </html>

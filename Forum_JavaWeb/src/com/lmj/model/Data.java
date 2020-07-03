@@ -1,14 +1,22 @@
 package com.lmj.model;
 
 public class Data {
-
+	
+	private Integer id;
 	private String title;
 	private String content;
-	private String ansnum;
+	private Integer ansnum;
+	public Integer getAnsnum() {
+		return ansnum;
+	}
+
+	public void setAnsnum(Integer ansnum) {
+		this.ansnum = ansnum;
+	}
+
 	private Integer u_id;
 	private String username;
-	private Integer id;
-
+	
 	public Integer getId() {
 		return id;
 	}
@@ -23,15 +31,6 @@ public class Data {
 	public void setU_id(Integer u_id) {
 		this.u_id = u_id;
 	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
 	public String getTitle() {
 		return title;
 	}
@@ -48,11 +47,11 @@ public class Data {
 		this.content = content;
 	}
 
-	public String getAnsnum() {
-		return ansnum;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setAnsnum(String ansnum) {
-		this.ansnum = ansnum;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }

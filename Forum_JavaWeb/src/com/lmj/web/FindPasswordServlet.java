@@ -23,7 +23,7 @@ public class FindPasswordServlet extends HttpServlet {
 		String phonenum = request.getParameter("phonenum");
 		
 		if(username == "" || phonenum == "") {
-			System.out.println("FindPasswordFile");
+			System.out.println("修改密码失败");
 			request.setAttribute("findPasswordError", "请输入用户名和手机号!");
 			request.getRequestDispatcher("/findPassword.jsp").forward(request, response);
 			return;
@@ -33,7 +33,7 @@ public class FindPasswordServlet extends HttpServlet {
 			user.setUsername(username);
 			user.setPhonenum(phonenum);
 		} else {
-			System.out.println("FindPasswordFile");
+			System.out.println("修改密码失败");
 			request.setAttribute("findPasswordError", "确认密码与设置密码不匹配!");
 			request.getRequestDispatcher("/findPassword.jsp").forward(request, response);
 			return;
@@ -41,10 +41,10 @@ public class FindPasswordServlet extends HttpServlet {
 		
 		Boolean temp = userService.UpdateUser(user);
 		if(temp) {
-			System.out.println("FindPasswordSuccess");
+			System.out.println("修改密码成功");
 			response.sendRedirect(request.getContextPath() + "/login.jsp");
 		}else {
-			System.out.println("FindPasswordFile");
+			System.out.println("修改密码失败");
 			request.setAttribute("findPasswordError", "用户名与手机号不匹配!");
 			request.getRequestDispatcher("/findPassword.jsp").forward(request, response);
 		}

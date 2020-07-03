@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebListener;
 
 import com.lmj.model.Data;
 import com.lmj.service.DataService;
+import com.lmj.service.UserService;
 
 //@WebListener
 public class ApplicationListener implements ServletContextListener {
@@ -21,10 +22,15 @@ public class ApplicationListener implements ServletContextListener {
     }
     //任务初始化
     public void contextInitialized(ServletContextEvent arg0)  { 
-    	System.out.println("application被创建出来，这里可以做一些初始化的事情");
+    	System.out.println("初始化页面");
     	DataService dataService = new DataService();
 		List<Data> datas = dataService.GetDatas();
-
+		
+		UserService userService = new UserService();
+		for(Data d:datas) {
+			d.setUsername(userService.FindUsername(d.getU_id()));
+		}
+		
 		arg0.getServletContext().setAttribute("initDatas", datas);
 		
 //		for (Data data : datas) {

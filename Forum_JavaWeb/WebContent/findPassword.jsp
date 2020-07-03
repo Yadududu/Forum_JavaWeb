@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>找回密码</title>
 <link rel="stylesheet" type="text/css" href="css/login.css" />
 <link rel="stylesheet" href="css/head.css" />
 <link rel="stylesheet" type="text/css" href="css/login.css" />

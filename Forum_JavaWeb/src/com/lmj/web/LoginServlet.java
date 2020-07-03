@@ -21,20 +21,18 @@ public class LoginServlet extends HttpServlet {
 		UserService userService = new UserService();
 		user.setUsername(request.getParameter("username"));
 		user.setPassword(request.getParameter("password"));
-		int userID = userService.FindUser(user);
+		int userID = userService.FindUserId(user);
 		user.setId(userID);
 		
 		if (userID!=0) {
-			System.out.println("LoginSuccess");
+			System.out.println("登陆成功");
 			request.getSession().setAttribute("user",user);
-//			request.getSession().setAttribute("userID",userID);
 			response.sendRedirect(request.getContextPath() + "/index.jsp");
 
 		} else {
-			System.out.println("Loginfail");
+			System.out.println("登陆失败");
 			request.setAttribute("loginError", "你输入的用户或者密码有误,请重新输入!");
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
-//			response.sendRedirect(request.getContextPath() + "/login.jsp");
 		}
 		
 	}

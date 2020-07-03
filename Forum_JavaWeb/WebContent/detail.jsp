@@ -34,31 +34,31 @@ form {
 			<div class="content detail">
 				<div class="fly-panel detail-box">
 					<h1>${title }</h1>
-					<div class="fly-tip fly-detail-hint" data-id="">
-						<span class="fly-tip-stick">置顶帖</span>
-						<span class="jie-admin"> 
-							<a href="">点击置顶</a> </span> 
-						<span class="layui-btn layui-btn-mini jie-admin"> 
-							<a href="">取消置顶</a></span> 
-						<span class="jie-admin" type="del" style="margin-left: 20px;">
-							<a>删除该帖</a> </span> 
-						</span>
-						<div class="fly-list-hint">
-							<i class="iconfont" title="回答">&#xe60c;</i> 2 
-						</div>
-					</div>
+<!-- 					<div class="fly-tip fly-detail-hint" data-id=""> -->
+<!-- 						<span class="fly-tip-stick">置顶帖</span> -->
+<!-- 						<span class="jie-admin">  -->
+<!-- 							<a href="">点击置顶</a> </span>  -->
+<!-- 						<span class="layui-btn layui-btn-mini jie-admin">  -->
+<!-- 							<a href="">取消置顶</a></span>  -->
+<!-- 						<span class="jie-admin" type="del" style="margin-left: 20px;"> -->
+<!-- 							<a>删除该帖</a> </span>  -->
+<!-- 						</span> -->
+<!-- 						<div class="fly-list-hint"> -->
+<!-- 							<i class="iconfont" title="回答">&#xe60c;</i> 2  -->
+<!-- 						</div> -->
+<!-- 					</div> -->
 					<div class="detail-about">
 						<div class="jie-user" href=""> 
 							<img src="res/images/uer.jpg" alt="头像"> 
-								<cite> ${username } <em>2017-05-01发布</em> </cite> </div>
-						<div class="detail-hits" data-id="{{rows.id}}">
-							 <span class="layui-btn layui-btn-mini jie-admin">
-							 	<a href="#">已完帖，无法编辑</a> </span> 
-							 <span class="layui-btn layui-btn-mini jie-admin" type="collect" data-type="add"> 
-							 	<a id="collectPost">收藏</a> </span> 
-							 <span class="layui-btn layui-btn-mini jie-admin  layui-btn-danger" type="collect" data-type="add"> 
-							 	<a>取消收藏</a> </span>
-						</div>
+								<cite> ${username } <em>发布</em> </cite> </div>
+<!-- 						<div class="detail-hits" data-id="{{rows.id}}"> -->
+<!-- 							 <span class="layui-btn layui-btn-mini jie-admin"> -->
+<!-- 							 	<a href="#">已完帖，无法编辑</a> </span>  -->
+<!-- 							 <span class="layui-btn layui-btn-mini jie-admin" type="collect" data-type="add">  -->
+<!-- 							 	<a id="collectPost">收藏</a> </span>  -->
+<!-- 							 <span class="layui-btn layui-btn-mini jie-admin  layui-btn-danger" type="collect" data-type="add">  -->
+<!-- 							 	<a>取消收藏</a> </span> -->
+<!-- 						</div> -->
 					</div>
 					<div class="detail-body photos" style="margin-bottom: 20px;">
 						<p>${content }</p>
@@ -80,7 +80,7 @@ form {
                   						 <em style="color:#5FB878">(管理员)</em> --> 
                 				</cite> </a>
 								<div class="detail-hits">
-									<span>3分钟前</span>
+<!-- 									<span>3分钟前</span> -->
 								</div>
 <!-- 							<i class="iconfont icon-caina" title="最佳答案"></i> -->
 							</div>
@@ -88,17 +88,17 @@ form {
 								<p>${answer.content }</p>
 							</div>
 							
-							<div class="jieda-reply">
-								<span class="jieda-zan zanok" type="zan">
-									<i class="iconfont icon-zan"></i>
-									<em>12</em>
-								</span> 
- 								<div class="jieda-admin">
-					                <span type="del"><a href="#" class="layui-btn layui-btn-danger layui-btn-small">删除</a></span>
-									<span class="jieda-accept" type="accept">
-									<a href="#" class="layui-btn  layui-btn-small">采纳</a></span>
-               					</div>
-							</div>
+<!-- 							<div class="jieda-reply"> -->
+<!-- 								<span class="jieda-zan zanok" type="zan"> -->
+<!-- 									<i class="iconfont icon-zan"></i> -->
+<!-- 									<em>12</em> -->
+<!-- 								</span>  -->
+<!--  								<div class="jieda-admin"> -->
+<!-- 					                <span type="del"><a href="#" class="layui-btn layui-btn-danger layui-btn-small">删除</a></span> -->
+<!-- 									<span class="jieda-accept" type="accept"> -->
+<!-- 									<a href="#" class="layui-btn  layui-btn-small">采纳</a></span> -->
+<!--                					</div> -->
+<!-- 							</div> -->
 						</li>
 						</c:forEach>
 
@@ -123,79 +123,6 @@ form {
 			</div>
 		</div>
 
-		<div class="edge">
-			<dl class="fly-panel fly-list-one">
-				<dt class="fly-panel-title">最近热帖</dt>
-				<dd>
-					<a href="">使用 layui 秒搭后台大布局（基本结构）</a> <span><i
-						class="iconfont">&#xe60b;</i> 6087</span>
-				</dd>
-				<dd>
-					<a href="">Java实现LayIM后端的核心代码</a> <span><i class="iconfont">&#xe60b;</i>
-						767</span>
-				</dd>
-				<dd>
-					<a href="">使用 layui 秒搭后台大布局（基本结构）</a> <span><i
-						class="iconfont">&#xe60b;</i> 6087</span>
-				</dd>
-				<dd>
-					<a href="">Java实现LayIM后端的核心代码</a> <span><i class="iconfont">&#xe60b;</i>
-						767</span>
-				</dd>
-				<dd>
-					<a href="">使用 layui 秒搭后台大布局（基本结构）</a> <span><i
-						class="iconfont">&#xe60b;</i> 6087</span>
-				</dd>
-				<dd>
-					<a href="">Java实现LayIM后端的核心代码</a> <span><i class="iconfont">&#xe60b;</i>
-						767</span>
-				</dd>
-				<dd>
-					<a href="">使用 layui 秒搭后台大布局（基本结构）</a> <span><i
-						class="iconfont">&#xe60b;</i> 6087</span>
-				</dd>
-				<dd>
-					<a href="">Java实现LayIM后端的核心代码</a> <span><i class="iconfont">&#xe60b;</i>
-						767</span>
-				</dd>
-			</dl>
-
-			<dl class="fly-panel fly-list-one">
-				<dt class="fly-panel-title">近期热议</dt>
-				<dd>
-					<a href="">使用 layui 秒搭后台大布局之基本结构</a> <span><i
-						class="iconfont">&#xe60c;</i> 96</span>
-				</dd>
-				<dd>
-					<a href="">使用 layui 秒搭后台大布局之基本结构</a> <span><i
-						class="iconfont">&#xe60c;</i> 96</span>
-				</dd>
-				<dd>
-					<a href="">使用 layui 秒搭后台大布局之基本结构</a> <span><i
-						class="iconfont">&#xe60c;</i> 96</span>
-				</dd>
-				<dd>
-					<a href="">使用 layui 秒搭后台大布局之基本结构</a> <span><i
-						class="iconfont">&#xe60c;</i> 96</span>
-				</dd>
-				<dd>
-					<a href="">使用 layui 秒搭后台大布局之基本结构</a> <span><i
-						class="iconfont">&#xe60c;</i> 96</span>
-				</dd>
-				<dd>
-					<a href="">使用 layui 秒搭后台大布局之基本结构</a> <span><i
-						class="iconfont">&#xe60c;</i> 96</span>
-				</dd>
-				<dd>
-					<a href="">使用 layui 秒搭后台大布局之基本结构</a> <span><i
-						class="iconfont">&#xe60c;</i> 96</span>
-				</dd>
-				<dd>
-					<a href="">使用 layui 秒搭后台大布局之基本结构</a> <span><i
-						class="iconfont">&#xe60c;</i> 96</span>
-				</dd>
-			</dl>
-		</div>
 	</div>
  <script type="text/javascript" charset="utf-8" src="res/js/kindeditor.js"></script>
   <script type="text/javascript">

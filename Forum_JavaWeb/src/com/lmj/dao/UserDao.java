@@ -18,7 +18,7 @@ public class UserDao {
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 
-	public User FindUser(User user) {
+	public User FindUserId(User user) {
 //		con = MySqlUtil.GetConnection();
 //		String sql = "Select * From user where username=? and password = ?";
 //
@@ -53,7 +53,7 @@ public class UserDao {
 		}
 		return temp;
 	}
-	public boolean FindUser(String username) {
+	public User FindUser(String username) {
 		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
 		String sql = "Select * From user where username=?";
 		User temp = null;
@@ -63,14 +63,22 @@ public class UserDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(temp!=null) {
-			return true;
-		}else {
-			return false;
+		return temp;
+	}
+	public User FindUsername(Integer id) {
+		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
+		String sql = "Select * From user where id=?";
+		User temp = null;
+		try {
+			temp = runner.query(sql, new BeanHandler<User>(User.class),id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		return temp;
 	}
 	
-	public boolean InsertUser(User user) {
+	public int InsertUser(User user) {
 //		con = MySqlUtil.GetConnection();
 //		String sql = "insert into user(username,password,phonenum) value(?,?,?)";
 //
@@ -104,10 +112,10 @@ public class UserDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return temp==0?false:true;
+		return temp;
 	}
 	
-	public boolean UpdateUser(User user) {
+	public int UpdateUser(User user) {
 //		con = MySqlUtil.GetConnection();
 //		String sql = "Update User set password = ? where username = ? and phonenum = ?";
 //
@@ -141,8 +149,6 @@ public class UserDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return temp==0?false:true;
+		return temp;
 	}
-
-	
 }

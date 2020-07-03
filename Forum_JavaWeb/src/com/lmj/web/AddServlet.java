@@ -18,15 +18,13 @@ public class AddServlet extends HttpServlet {
 		Data data = new Data();
 		data.setTitle(request.getParameter("title"));
 		data.setContent(request.getParameter("content"));
-		data.setAnsnum("0");
+		data.setAnsnum(0);
 		User user = (User) request.getSession().getAttribute("user");
-//		System.out.println(user.username);
+		System.out.println(user.getId());
 		data.setU_id(user.getId());
-//		System.out.println(data.u_id);
 		
 		DataService dataService = new DataService();
 		int dataID = dataService.AddData(data);
-//		System.out.println(dataID);
 		request.getRequestDispatcher("/DetailServlet?id="+dataID).forward(request, response);
 	}
 

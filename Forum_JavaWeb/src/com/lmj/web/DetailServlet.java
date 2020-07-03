@@ -13,6 +13,7 @@ import com.lmj.model.Answer;
 import com.lmj.model.Data;
 import com.lmj.service.AnswerService;
 import com.lmj.service.DataService;
+import com.lmj.service.UserService;
 
 
 //@WebServlet("/DetailServlet")
@@ -25,11 +26,15 @@ public class DetailServlet extends HttpServlet {
 		List<Answer> answers = answerService.FindAllAnswer(dataID);
 		
 		DataService dataService = new DataService();
+		UserService userService = new UserService();
+		for(Answer answer:answers) {
+			answer.setUsername(userService.FindUsername(answer.getU_id()));
+		}
 		Data data = dataService.GetData(dataID);
 		
 		request.setAttribute("title", data.getTitle());
 		request.setAttribute("content", data.getContent());
-		request.setAttribute("username", data.getUsername());
+		request.setAttribute("username", userService.FindUsername(data.getU_id()));
 		request.setAttribute("answers", answers);
 		request.getRequestDispatcher("/detail.jsp").forward(request, response);
 		
