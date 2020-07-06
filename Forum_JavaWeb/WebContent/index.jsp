@@ -48,7 +48,7 @@
 						<div class="quesContent">
 							<div class="quesTitle">
 									<a href="${pageContext.request.contextPath }/DetailServlet?id=${data.id }"> 
-									${data.title }</a></span>
+									${data.title }</a>
 							</div>
 							<div class="qContent">${data.content }</div>
 							<div class="tags">

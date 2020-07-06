@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
-import org.junit.Test;
 
 import com.lmj.model.User;
 import com.lmj.util.MySqlUtil;

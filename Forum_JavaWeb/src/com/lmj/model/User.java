@@ -7,6 +7,14 @@ public class User {
 	private String password;
 	private String phonenum;
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getPhonenum() {
 		return phonenum;
 	}
@@ -19,13 +27,6 @@ public class User {
 		return username;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public void setUsername(String username) {
 		this.username = username;

@@ -27,7 +27,7 @@ public class UserService {
 
 	public boolean RegisterUser(User user) {
 		UserDao userDao = new UserDao();
-		User u = userDao.FindUserId(user);
+		User u = userDao.FindUser(user.getUsername());
 		if(u==null) {
 			userDao.InsertUser(user);
 			return true;
