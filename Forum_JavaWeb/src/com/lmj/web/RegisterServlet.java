@@ -56,7 +56,7 @@ public class RegisterServlet extends HttpServlet {
 			return;
 		}
 
-		boolean temp = userService.RegisterUser(user);
+		boolean temp = userService.InsertUser(user);
 		if (temp) {
 			System.out.println("×¢²á³É¹¦");
 			response.sendRedirect(request.getContextPath() + "/login.jsp");

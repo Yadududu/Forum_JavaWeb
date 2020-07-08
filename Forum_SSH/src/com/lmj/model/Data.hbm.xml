@@ -9,8 +9,16 @@
 			<generator class="uuid"></generator>
 		</id>
 		<property name="title" column="title"></property>
-		<property name="content" column="content"></property>
+		<property name="dtime" column="dtime"></property>
+		<property name="dcontent" column="dcontent"></property>
 		<property name="ansnum" column="ansnum"></property>
 		<property name="u_id" column="u_id"></property>
+		<property name="username"></property>
+		
+		<many-to-one name="user" column="u_id" class="User" insert="false" update="false"></many-to-one>
+		<set name="answerSet" cascade="all">
+			<key column="d_id"></key>
+			<one-to-many class="Answer"/>
+		</set>
 	</class>
 </hibernate-mapping>

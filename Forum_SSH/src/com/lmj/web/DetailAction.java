@@ -11,30 +11,32 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class DetailAction extends ActionSupport {
-	private int id;
+	private String id;
 	
 	public String execute() throws Exception {
 		//返回帖子内容
 		Data data = new Data();
 		DataService dataService = new DataService();
-		data = dataService.GetData(id);
+		data = dataService.FindDatabyId(id);
 		ActionContext.getContext().put("data", data);
 		
 		//返回回答内容
 		AnswerService answerService = new AnswerService();
-		UserService userService = new UserService();
 		List<Answer> answers=answerService.FindAllAnswer(id);
-		answers.forEach(answer->answer.setUsername(userService.FindUsername(answer.getU_id())));
+//		UserService userService = new UserService();
+//		answers.forEach(answer->answer.setUsername(userService.FindUsernamebyId(answer.getU_id())));
+//		answers.forEach(answer->System.out.println(answer.getUsername()));
 		ActionContext.getContext().put("answers",answers);
 		
 		return "success";
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
+
 }

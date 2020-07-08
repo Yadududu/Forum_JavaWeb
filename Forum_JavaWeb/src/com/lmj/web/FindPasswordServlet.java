@@ -39,7 +39,7 @@ public class FindPasswordServlet extends HttpServlet {
 			return;
 		}
 		
-		Boolean temp = userService.UpdateUser(user);
+		Boolean temp = userService.UpdateUserPassword(user);
 		if(temp) {
 			System.out.println("ĞŞ¸ÄÃÜÂë³É¹¦");
 			response.sendRedirect(request.getContextPath() + "/login.jsp");

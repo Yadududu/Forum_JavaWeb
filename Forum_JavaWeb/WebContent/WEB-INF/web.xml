@@ -66,12 +66,12 @@
     <url-pattern>/AddServlet</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>VerifyUsername</servlet-name>
-    <servlet-class>com.lmj.web.VerifyUsername</servlet-class>
+    <servlet-name>VerifyServlet</servlet-name>
+    <servlet-class>com.lmj.web.VerifyServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>VerifyUsername</servlet-name>
-    <url-pattern>/VerifyUsername</url-pattern>
+    <servlet-name>VerifyServlet</servlet-name>
+    <url-pattern>/VerifyServlet</url-pattern>
   </servlet-mapping>
   <filter>
     <filter-name>EncodingFilter</filter-name>

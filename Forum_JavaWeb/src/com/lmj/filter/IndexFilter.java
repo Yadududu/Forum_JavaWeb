@@ -29,10 +29,10 @@ public class IndexFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		System.out.println("读取数据库,获取datas");
 		DataService dataService = new DataService();
-		List<Data> datas = dataService.GetDatas();
+		List<Data> datas = dataService.FindAllData();
 		
-		UserService userService = new UserService();
-    	datas.forEach(data->data.setUsername(userService.FindUsername(data.getU_id())));
+//		UserService userService = new UserService();
+//    	datas.forEach(data->data.setUsername(userService.FindUsernamebyId(data.getU_id())));
 		request.getServletContext().setAttribute("initDatas", datas);
 		chain.doFilter(request, response);
 	}

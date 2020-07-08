@@ -12,10 +12,14 @@ public class AnswerService {
 		return answerDao.FindAllAnswer(dataID);
 	}
 
-	public boolean AddAnswer(Answer answer) {
+	public boolean InsertAnswer(Answer answer) {
 		AnswerDao answerDao = new AnswerDao();
-		int temp = answerDao.AddAnswer(answer);
+		int temp = answerDao.InsertAnswer(answer);
 		return temp==0?false:true;
 	}
-
+	public void DeleAnswerById(int id) {
+		AnswerDao answerDao = new AnswerDao();
+		answerDao.DeleAnswerById(id);
+	}
+	
 }

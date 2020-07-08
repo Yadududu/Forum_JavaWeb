@@ -20,7 +20,6 @@
 				<s:property value="#session.user.username "/> 
 				<a href="logout.jsp"> 注销   </a>
 			</s:else>
-			
 	</div>
 </div>
 <div class="dvContent">
@@ -45,18 +44,22 @@
 						</div>
 						<div class="quesContent">
 							<div class="quesTitle">
-									<a href="${pageContext.request.contextPath }/DetailAction?id=<s:property value="#data.id" />"> 
+									<a href="${pageContext.request.contextPath }/DetailAction_execute?id=<s:property value="#data.id" />"> 
 									<s:property value="#data.title" /></a>
 							</div>
-							<div class="qContent">${data.content }</div>
+							<div class="qContent">${data.dcontent }</div>
 							<div class="tags">
-								<!-- <span class="tag">excel</span><span class="tag">程序</span> -->
+<%-- 								<span class="tag">excel</span><span class="tag">程序</span> --%>
 							</div>
 							<div class="quesUser">
 								<image src="images/0.gif" class="imguser" />
 								<div class="userName">
 									<s:property value="#data.username" />
-									<!-- <div class="liulan">浏览(9) 30分钟前</div> -->
+									 <div class="liulan"><s:property value="#data.dtime" /></div> 
+									 
+									 <s:if test="#session.user.admin">
+									 	<a href="${pageContext.request.contextPath }/DeleAction_deleData?delId=<s:property value="#data.id" />" class="layui-btn layui-btn-danger layui-btn-small">删除</a>
+									 </s:if>
 								</div>
 
 							</div>

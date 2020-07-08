@@ -1,80 +1,65 @@
 package com.lmj.dao;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.BeanHandler;
-import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.hibernate.Session;
+import org.hibernate.query.NativeQuery;
 
 import com.lmj.model.Data;
-import com.lmj.util.MySqlUtil;
+import com.lmj.util.HibernateUtils;
 
 public class DataDao {
 	
-	public List<Data> GetAllData() {
-		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
-		String sql = "SELECT user.username,data.id,data.title,data.content,data.ansnum,data.u_id FROM user join data on user.id = data.u_id;";
-		List<Data> datas = new ArrayList<Data>();
-		try {
-			datas = runner.query(sql, new BeanListHandler<Data>(Data.class));
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return datas;
+	public List<Data> FindAllData() {
+		Session session = HibernateUtils.getCurrentSession();
+		String sql = "SELECT user.username,data.id,data.title,data.dcontent,data.ansnum,data.u_id,data.dtime FROM user join data on user.id = data.u_id;";
+		NativeQuery query = session.createSQLQuery(sql);
+		query.addEntity(Data.class);
+		
+		List<Data> dataList = query.list();
+		
+		return dataList;
 	}
 
-	public Data GetData(int dataID) {
-		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
-		String sql = "SELECT user.username,data.id,data.title,data.content,data.ansnum,data.u_id FROM user join data on user.id = data.u_id where data.id=?;";
-		Data data = new Data();
-		try {
-			data = runner.query(sql, new BeanHandler<Data>(Data.class), dataID);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public Data FindDatabyId(String dataID) {
+		Session session = HibernateUtils.getCurrentSession();
+		String sql = "SELECT user.username,data.id,data.title,data.dcontent,data.ansnum,data.u_id,data.dtime FROM user join data on user.id = data.u_id where data.id=?;";
+		NativeQuery query = session.createSQLQuery(sql);
+		query.setParameter(1, dataID);
+		query.addEntity(Data.class);
+		
+		Data data = (Data) query.uniqueResult();
+		
 		return data;
 	}
 
 
-	public int AddData(Data data) {
-		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
-		String sql = "insert into data(title,content,ansnum,u_id) value(?,?,?,?);";
-		int temp = 0;
-		try {
-			temp = runner.update(sql,  data.getTitle(), data.getContent(), data.getAnsnum(), data.getU_id());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return temp;
+	public void InsertData(Data data) {
+		Session session = HibernateUtils.getCurrentSession();
+		session.save(data);
 	}
-	public int GetID(Data data) {
-		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
-		String sql = "SELECT * FROM data where title=? and content=? and u_id=?;";
-		Data d = new Data();
-		try {
-			d = runner.query(sql, new BeanHandler<Data>(Data.class), data.getTitle(),data.getContent(),data.getU_id());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return d.getId();
+	public void DeleData(Data data) {
+		Session session = HibernateUtils.getCurrentSession();
+		session.delete(data);
+	}
+	public List<Data> FindDatabyTitleAndContentAndUId(String title,String content,String uid) {
+		Session session = HibernateUtils.getCurrentSession();
+		String sql = "SELECT * FROM data where title=? and dcontent=? and u_id=?;";
+		NativeQuery query = session.createSQLQuery(sql);
+		query.setParameter(1, title);
+		query.setParameter(2, content);
+		query.setParameter(3, uid);
+		query.addEntity(Data.class);
+		
+		List<Data> datas = query.list();
+		
+		return datas;
 	}
 
-	public int UpdateAnsnum(Integer id, int ansnum) {
-		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
-		String sql = "update data set ansnum=? where id=?;";
-		int temp = 0;
-		try {
-			temp = runner.update(sql, ansnum, id);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return temp;
+	public void UpdateDataAnsnum(String id, int ansnum) {
+		Session session = HibernateUtils.getCurrentSession();
+		Data data = session.get(Data.class, id);
+		data.setAnsnum(ansnum);
+		session.update(data);
 	}
 }

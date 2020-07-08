@@ -17,7 +17,7 @@ public class SessionListener implements HttpSessionAttributeListener {
     //单点登陆
     public void attributeAdded(HttpSessionBindingEvent arg0)  { 
          // TODO Auto-generated method stub
-    	System.out.println("attributeAdded");
+    	System.out.println("检测用户是否在其他地方登陆");
     	
     	//判断是否有登录
     	if(arg0.getName().equals("user")) {

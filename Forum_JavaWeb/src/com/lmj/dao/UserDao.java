@@ -17,7 +17,7 @@ public class UserDao {
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 
-	public User FindUserId(User user) {
+	public User FindUserbyUsernameAndPassword(String username,String password) {
 //		con = MySqlUtil.GetConnection();
 //		String sql = "Select * From user where username=? and password = ?";
 //
@@ -45,14 +45,14 @@ public class UserDao {
 		String sql = "Select * From user where username=? and password = ?";
 		User temp = null;
 		try {
-			temp = runner.query(sql, new BeanHandler<User>(User.class),user.getUsername(),user.getPassword());
+			temp = runner.query(sql, new BeanHandler<User>(User.class),username,password);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return temp;
 	}
-	public User FindUser(String username) {
+	public User FindUserbyUsername(String username) {
 		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
 		String sql = "Select * From user where username=?";
 		User temp = null;
@@ -64,7 +64,7 @@ public class UserDao {
 		}
 		return temp;
 	}
-	public User FindUsername(Integer id) {
+	public User FindUserbyId(Integer id) {
 		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
 		String sql = "Select * From user where id=?";
 		User temp = null;
@@ -114,7 +114,7 @@ public class UserDao {
 		return temp;
 	}
 	
-	public int UpdateUser(User user) {
+	public int UpdateUserPassword(User user) {
 //		con = MySqlUtil.GetConnection();
 //		String sql = "Update User set password = ? where username = ? and phonenum = ?";
 //

@@ -1,5 +1,8 @@
 package com.lmj.web;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import com.lmj.model.Data;
 import com.lmj.model.User;
 import com.lmj.service.DataService;
@@ -17,10 +20,15 @@ public class AddAction extends ActionSupport implements ModelDriven<Data>{
 		User user = (User)ActionContext.getContext().getSession().get("user");
 		data.setU_id(user.getId());
 		data.setUsername(user.getUsername());
+		Date date=new Date(System.currentTimeMillis());
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		String time = format.format(date);
+		data.setDtime(time);
 		
 		DataService dataService = new DataService();
-		int id = dataService.AddData(data);
-		if(id==0) {
+		dataService.InsertData(data);
+		String id = dataService.FindDataIdbyData(data);
+		if(id=="") {
 			System.out.println("·¢²¼Ê§°Ü");
 			return "fail";
 		}else {

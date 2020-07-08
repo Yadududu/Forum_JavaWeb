@@ -48,7 +48,7 @@
         	<label for="L_content" class="layui-form-label" style="top: -2px;">描述</label>
 			<div class="layui-input-block">
 				<div class="editor">
-					<textarea id="content" name="content" style="width:1040px;height:450px;visibility:hidden;"></textarea>
+					<textarea id="content" name="dcontent" style="width:1040px;height:450px;visibility:hidden;"></textarea>
 				</div>
 			</div>
 		</div>

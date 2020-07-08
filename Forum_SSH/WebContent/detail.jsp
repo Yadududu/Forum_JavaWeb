@@ -35,14 +35,14 @@ form {
 				<div class="fly-panel detail-box">
 					<h1>${data.title }</h1>
 <!-- 					<div class="fly-tip fly-detail-hint" data-id=""> -->
-<!-- 						<span class="fly-tip-stick">置顶帖</span> -->
-<!-- 						<span class="jie-admin">  -->
-<!-- 							<a href="">点击置顶</a> </span>  -->
-<!-- 						<span class="layui-btn layui-btn-mini jie-admin">  -->
-<!-- 							<a href="">取消置顶</a></span>  -->
-<!-- 						<span class="jie-admin" type="del" style="margin-left: 20px;"> -->
-<!-- 							<a>删除该帖</a> </span>  -->
-<!-- 						</span> -->
+<%-- 						<span class="fly-tip-stick">置顶帖</span> --%>
+<%-- 						<span class="jie-admin">  --%>
+<%-- 							<a href="">点击置顶</a> </span>  --%>
+<%-- 						<span class="layui-btn layui-btn-mini jie-admin">  --%>
+<%-- 							<a href="">取消置顶</a></span>  --%>
+<%-- 						<span class="jie-admin" type="del" style="margin-left: 20px;"> --%>
+<%-- 							<a>删除该帖</a> </span>  --%>
+<%-- 						</span> --%>
 <!-- 						<div class="fly-list-hint"> -->
 <!-- 							<i class="iconfont" title="回答">&#xe60c;</i> 2  -->
 <!-- 						</div> -->
@@ -50,18 +50,21 @@ form {
 					<div class="detail-about">
 						<div class="jie-user" href=""> 
 							<img src="res/images/uer.jpg" alt="头像"> 
-								<cite> ${data.username } <em>发布</em> </cite> </div>
-<!-- 						<div class="detail-hits" data-id="{{rows.id}}"> -->
-<!-- 							 <span class="layui-btn layui-btn-mini jie-admin"> -->
-<!-- 							 	<a href="#">已完帖，无法编辑</a> </span>  -->
-<!-- 							 <span class="layui-btn layui-btn-mini jie-admin" type="collect" data-type="add">  -->
-<!-- 							 	<a id="collectPost">收藏</a> </span>  -->
-<!-- 							 <span class="layui-btn layui-btn-mini jie-admin  layui-btn-danger" type="collect" data-type="add">  -->
-<!-- 							 	<a>取消收藏</a> </span> -->
-<!-- 						</div> -->
+								<cite> ${data.username } <em>${data.dtime } 发布</em> </cite>  </div>
+								<s:if test="#session.user.admin">
+									<div class="detail-hits" data-id="{{rows.id}}">
+<%-- 									 <span class="layui-btn layui-btn-mini jie-admin"> --%>
+<%-- 									 	<a href="#">已完帖，无法编辑</a> </span>  --%>
+<%-- 									 <span class="layui-btn layui-btn-mini jie-admin" type="collect" data-type="add">  --%>
+<%-- 									 	<a id="collectPost">收藏</a> </span>  --%>
+									 <span class="layui-btn layui-btn-mini jie-admin  layui-btn-danger" type="collect" data-type="add"> 
+									  	<a href="${pageContext.request.contextPath }/DeleAction_deleData?delId=${data.id }" >删除</a> 
+									 </span>
+									</div>
+								</s:if>
 					</div>
 					<div class="detail-body photos" style="margin-bottom: 20px;">
-						<p>${data.content }</p>
+						<p>${data.dcontent }</p>
 					</div>
 				</div>
 				<div class="fly-panel detail-box" style="padding-top: 0;">
@@ -76,8 +79,8 @@ form {
 								<img src="res/images/uer.jpg" alt=""> 
 								<cite> 
 									<i>${answer.username }</i>
-									<!-- <em>(楼主)</em>
-                  						 <em style="color:#5FB878">(管理员)</em> --> 
+<!-- 										<em>(楼主)</em> -->
+<!--                   						<em style="color:#5FB878">(管理员)</em> -->
                 				</cite> </a>
 								<div class="detail-hits">
 <!-- 									<span>3分钟前</span> -->
@@ -85,20 +88,23 @@ form {
 <!-- 							<i class="iconfont icon-caina" title="最佳答案"></i> -->
 							</div>
 							<div class="detail-body jieda-body">
-								<p>${answer.content }</p>
+								<p>${answer.acontent }</p>
 							</div>
-							
-<!-- 							<div class="jieda-reply"> -->
-<!-- 								<span class="jieda-zan zanok" type="zan"> -->
+							<div class="liulan">${answer.atime }</div> 
+							<div class="jieda-reply">
+<%-- 								<span class="jieda-zan zanok" type="zan"> --%>
 <!-- 									<i class="iconfont icon-zan"></i> -->
 <!-- 									<em>12</em> -->
-<!-- 								</span>  -->
-<!--  								<div class="jieda-admin"> -->
-<!-- 					                <span type="del"><a href="#" class="layui-btn layui-btn-danger layui-btn-small">删除</a></span> -->
-<!-- 									<span class="jieda-accept" type="accept"> -->
-<!-- 									<a href="#" class="layui-btn  layui-btn-small">采纳</a></span> -->
-<!--                					</div> -->
-<!-- 							</div> -->
+<%-- 								</span>  --%>
+								<s:if test="#session.user.admin">
+									<div class="jieda-admin">
+						                <span type="del">
+						                <a href="${pageContext.request.contextPath }/DeleAction_deleAnswer?delId=${answer.id }&id=${data.id }" class="layui-btn layui-btn-danger layui-btn-small">删除</a></span>
+	<%-- 									<span class="jieda-accept" type="accept"> --%>
+	<%-- 									<a href="#" class="layui-btn  layui-btn-small">采纳</a></span> --%>
+	               					</div>
+								</s:if>
+							</div>
 						</li>
 						</s:iterator>
 
@@ -109,7 +115,7 @@ form {
 						<form action="${pageContext.request.contextPath }/DetailSubmitAction?id=${param.id }" method="post">
 							<div class="layui-form-item layui-form-text">
 								<div class="layui-input-block">
-									<textarea id="L_content" name="content" required lay-verify="required" 
+									<textarea id="L_content" name="acontent" required lay-verify="required" 
 									placeholder="我要回复" class="layui-textarea fly-editor" style="height: 150px;">
 									</textarea>
 								</div>

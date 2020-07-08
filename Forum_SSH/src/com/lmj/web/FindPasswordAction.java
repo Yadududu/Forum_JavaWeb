@@ -24,7 +24,7 @@ public class FindPasswordAction extends ActionSupport implements ModelDriven<Use
 		}
 		
 		UserService userService = new UserService();
-		boolean temp = userService.UpdateUser(user);
+		boolean temp = userService.UpdateUserPassword(user);
 		if(temp) {
 			System.out.println("ÐÞ¸Ä³É¹¦");
 			return "success";

@@ -58,7 +58,10 @@
 								<image src="images/0.gif" class="imguser" />
 								<div class="userName">
 									${data.username }
-									<!-- <div class="liulan">浏览(9) 30分钟前</div> -->
+									<div class="liulan"></div> 
+									<c:if test="${user.admin==true }"> 
+										<a href="${pageContext.request.contextPath }/DeleDataServlet?delId=${data.id }" class="layui-btn layui-btn-danger layui-btn-small">删除</a>
+									</c:if>
 								</div>
 
 							</div>

@@ -12,15 +12,14 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>{
 	
 	public String login() throws Exception {
 		UserService userService=new UserService();
-		int id = userService.FindUserId(user);
-		if(id==0) {
+		User u = userService.FindUserbyUsernameAndPassword(user.getUsername(),user.getPassword());
+		if(u==null) {
 			System.out.println("登陆失败");
 			ActionContext.getContext().put("loginError", "用户名或者密码错误!");
 			return "fail";
 		}else {
 			System.out.println("登陆成功");
-			user.setId(id);
-			ActionContext.getContext().getSession().put("user", user);
+			ActionContext.getContext().getSession().put("user", u);
 			return "success";
 		}
 	}

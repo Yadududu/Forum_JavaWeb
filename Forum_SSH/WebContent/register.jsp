@@ -11,85 +11,85 @@
 <link rel="stylesheet" type="text/css" href="css/login.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
-// $(function(){
+$(function(){
 	
-// 	$("input[name='username']").blur(verifyUsername);
-// 	$("input[name='password']").blur(verifyPassword);
-// 	$("input[name='checkPassword']").blur(verifyCheckPassword);
-// 	$("input[name='phonenum']").blur(verifyPhonenum);
+	$("input[name='username']").blur(verifyUsername);
+	$("input[name='password']").blur(verifyPassword);
+	$("input[name='checkPassword']").blur(verifyCheckPassword);
+	$("input[name='phonenum']").blur(verifyPhonenum);
 	
-// });
-// function verifyUsername(){
-// 	$.ajax({
-// 		url:encodeURI("${pageContext.request.contextPath }/VerifyUsername"),
-// 		type:"post",
-// 		data:{
-// 			username:$("input[name='username']").val()
-// 		},
-// 		dataType:"json",
-// 		success:function(msg){
-// // 			alert(msg.isSuccess);
-// 			if(msg.isSuccess){
-// 				$("#usernameMsg").html("<font color='green'>用户名可以用!</font>");
-// 			}else{
-// 				$("#usernameMsg").html("<font color='red'>用户名不能为空或用户名已经存在!</font>");
-// 			}
-// 		}
-// 	});
-// }
-// function verifyPassword(){
-// 	$.ajax({
-// 		url:encodeURI("${pageContext.request.contextPath }/VerifyUsername"),
-// 		type:"post",
-// 		data:{
-// 			password:$("input[name='password']").val()
-// 		},
-// 		dataType:"json",
-// 		success:function(msg){
-// 			if(msg.isSuccess){
-// 				$("#passwordMsg").html("");
-// 			}else{
-// 				$("#passwordMsg").html("<font color='red'>密码不能为空!</font>");
-// 			}
-// 		}
-// 	});
-// }
-// function verifyCheckPassword(){
-// 	$.ajax({
-// 		url:encodeURI("${pageContext.request.contextPath }/VerifyUsername"),
-// 		type:"post",
-// 		data:{
-// 			password:$("input[name='password']").val(),
-// 			checkPassword:$("input[name='checkPassword']").val()
-// 		},
-// 		dataType:"json",
-// 		success:function(msg){
-// 			if(msg.isSuccess){
-// 				$("#checkPasswordMsg").html("");
-// 			}else{
-// 				$("#checkPasswordMsg").html("<font color='red'>跟设置密码不一致,清重新输入!</font>");
-// 			}
-// 		}
-// 	});
-// }
-// function verifyPhonenum(){
-// 	$.ajax({
-// 		url:encodeURI("${pageContext.request.contextPath }/VerifyUsername"),
-// 		type:"post",
-// 		data:{
-// 			phonenum:$("input[name='phonenum']").val()
-// 		},
-// 		dataType:"json",
-// 		success:function(msg){
-// // 			alert(msg.isSuccess);
-// 			if(msg.isSuccess){
-// 				$("#phoneMsg").html("");
-// 			}else{
-// 				$("#phoneMsg").html("<font color='red'>手机号码有误，请重填!</font>");
-// 			}
-// 		}
-// 	});
-// }
+});
+function verifyUsername(){
+	$.ajax({
+		url:encodeURI("${pageContext.request.contextPath }/VerifyAction"),
+		type:"post",
+		data:{
+			username:$("input[name='username']").val()
+		},
+		dataType:"json",
+		success:function(msg){
+// 			alert(msg.isSuccess);
+			if(msg.isSuccess){
+				$("#usernameMsg").html("<font color='green'>用户名可以用!</font>");
+			}else{
+				$("#usernameMsg").html("<font color='red'>用户名不能为空或用户名已经存在!</font>");
+			}
+		}
+	});
+}
+function verifyPassword(){
+	$.ajax({
+		url:encodeURI("${pageContext.request.contextPath }/VerifyAction"),
+		type:"post",
+		data:{
+			password:$("input[name='password']").val()
+		},
+		dataType:"json",
+		success:function(msg){
+			if(msg.isSuccess){
+				$("#passwordMsg").html("");
+			}else{
+				$("#passwordMsg").html("<font color='red'>密码不能为空!</font>");
+			}
+		}
+	});
+}
+function verifyCheckPassword(){
+	$.ajax({
+		url:encodeURI("${pageContext.request.contextPath }/VerifyAction"),
+		type:"post",
+		data:{
+			password:$("input[name='password']").val(),
+			checkPassword:$("input[name='checkPassword']").val()
+		},
+		dataType:"json",
+		success:function(msg){
+			if(msg.isSuccess){
+				$("#checkPasswordMsg").html("");
+			}else{
+				$("#checkPasswordMsg").html("<font color='red'>跟设置密码不一致,清重新输入!</font>");
+			}
+		}
+	});
+}
+function verifyPhonenum(){
+	$.ajax({
+		url:encodeURI("${pageContext.request.contextPath }/VerifyAction"),
+		type:"post",
+		data:{
+			phonenum:$("input[name='phonenum']").val()
+		},
+		dataType:"json",
+		success:function(msg){
+// 			alert(msg.isSuccess);
+			if(msg.isSuccess){
+				$("#phoneMsg").html("");
+			}else{
+				$("#phoneMsg").html("<font color='red'>手机号码有误，请重填!</font>");
+			}
+		}
+	});
+}
 </script>
 </head>
 

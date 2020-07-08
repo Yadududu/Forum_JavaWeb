@@ -1,50 +1,78 @@
 package com.lmj.service;
 
+import org.hibernate.Transaction;
+
 import com.lmj.dao.UserDao;
 import com.lmj.model.User;
+import com.lmj.util.HibernateUtils;
 
 public class UserService {
 
-	public int FindUserId(User user) {
+	public User FindUserbyUsernameAndPassword(String username,String password) {
 		UserDao userDao = new UserDao();
-		User u = userDao.FindUserId(user);
-		if(u!=null) {
-			return u.getId();
-		}else {
-			return 0;
+		Transaction transaction=HibernateUtils.getCurrentSession().beginTransaction();
+		User u=null;
+		try {
+			u = userDao.FindUserbyUsernameAndPassword(username,password);
+		}catch(Exception e){
+			transaction.rollback();
 		}
+		transaction.commit();
+		
+		return u!=null?u:null;
 	}
-	public boolean FindUser(String username) {
+	public boolean isExistUserbyUsername(String username) {
 		UserDao userDao = new UserDao();
-		User user = userDao.FindUser(username);
-		if(user!=null) {
-			return true;
-		}else {
-			return false;
+		Transaction transaction = HibernateUtils.getCurrentSession().beginTransaction();
+		User user = null;
+		try{
+			user = userDao.FindUserbyUsername(username);
+		}catch(Exception e) {
+			transaction.rollback();
 		}
-	}
-
-	public boolean RegisterUser(User user) {
-		UserDao userDao = new UserDao();
-		User u = userDao.FindUser(user.getUsername());
-		System.out.println(u);
-		if(u==null) {
-			userDao.InsertUser(user);
-			return true;
-		}else {
-			return false;
-		}
+		transaction.commit();
+		
+		return user!=null?true:false;
 	}
 
-	public Boolean UpdateUser(User user) {
+	public boolean InsertUser(User user) {
 		UserDao userDao = new UserDao();
-		int temp = userDao.UpdateUser(user);
-		return temp==0?false:true;
+		Transaction transaction = HibernateUtils.getCurrentSession().beginTransaction();
+		User u=null;
+		try {
+			u = userDao.FindUserbyUsername(user.getUsername());
+			if(u==null) userDao.InsertUser(user);
+		}catch(Exception e) {
+			transaction.rollback();
+		}
+		transaction.commit();
+		
+		return u==null?true:false;
+	}
+
+	public Boolean UpdateUserPassword(User user) {
+		UserDao userDao = new UserDao();
+		Transaction transaction = HibernateUtils.getCurrentSession().beginTransaction();
+		try {
+			userDao.UpdateUserPassword(user);
+		}catch(Exception e) {
+			transaction.rollback();
+		}
+		transaction.commit();
+		return true;
 	}
 	
-	public String FindUsername(Integer id) {
+	public String FindUsernamebyId(String id) {
 		UserDao userDao = new UserDao();
-		User user= userDao.FindUsername(id);
+		Transaction transaction = HibernateUtils.getCurrentSession().beginTransaction();
+		User user=null;
+		try {
+			user= userDao.FindUserbyId(id);
+		}catch(Exception e) {
+			transaction.rollback();
+		}
+		transaction.commit();
+		
 		return user.getUsername();
 	}
 

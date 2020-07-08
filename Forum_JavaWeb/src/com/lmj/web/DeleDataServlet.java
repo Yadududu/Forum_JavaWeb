@@ -7,24 +7,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.lmj.model.Data;
-import com.lmj.model.User;
 import com.lmj.service.DataService;
 
-//@WebServlet("/AddServlet")
-public class AddServlet extends HttpServlet {
-	//添加帖子
+@WebServlet("/DeleDataServlet")
+public class DeleDataServlet extends HttpServlet {
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Data data = new Data();
-		data.setTitle(request.getParameter("title"));
-		data.setContent(request.getParameter("content"));
-		data.setAnsnum(0);
-		User user = (User) request.getSession().getAttribute("user");
-		data.setU_id(user.getId());
+		int id = Integer.parseInt(request.getParameter("delId"));
+		DataService dateService = new DataService();
+		dateService.DeleDataById(id);
+		System.out.println("删除成功");
 		
-		DataService dataService = new DataService();
-		int dataID = dataService.InsertData(data);
-		request.getRequestDispatcher("/DetailServlet?id="+dataID).forward(request, response);
+		response.sendRedirect(request.getContextPath() + "/index.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

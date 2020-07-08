@@ -1,14 +1,53 @@
 package com.lmj.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Data {
 	
-	private Integer id;
+	private String id;
+	private String dtime;
 	private String title;
-	private String content;
+	private String dcontent;
 	private Integer ansnum;
-	private Integer u_id;
+	private String u_id;
 	private String username;
 	
+	private User user;
+	private Set<Answer> answerSet = new HashSet<Answer>();
+	
+	public String getDtime() {
+		return dtime;
+	}
+
+	public void setDtime(String dtime) {
+		this.dtime = dtime;
+	}
+
+	public String getDcontent() {
+		return dcontent;
+	}
+
+	public void setDcontent(String dcontent) {
+		this.dcontent = dcontent;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Set<Answer> getAnswerSet() {
+		return answerSet;
+	}
+
+	public void setAnswerSet(Set<Answer> answerSet) {
+		this.answerSet = answerSet;
+	}
+
 	public Integer getAnsnum() {
 		return ansnum;
 	}
@@ -16,34 +55,29 @@ public class Data {
 	public void setAnsnum(Integer ansnum) {
 		this.ansnum = ansnum;
 	}
-	public Integer getId() {
+	
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-	public Integer getU_id() {
+
+	public String getU_id() {
 		return u_id;
 	}
 
-	public void setU_id(Integer u_id) {
+	public void setU_id(String u_id) {
 		this.u_id = u_id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
 	}
 
 	public String getUsername() {

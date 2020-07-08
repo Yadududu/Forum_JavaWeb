@@ -34,7 +34,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User>{
 		}
 		
 		UserService userService = new UserService();
-		boolean temp =userService.RegisterUser(user);
+		boolean temp =userService.InsertUser(user);
 		if(temp) {
 			System.out.println("×¢²á³É¹¦");
 			return "success";

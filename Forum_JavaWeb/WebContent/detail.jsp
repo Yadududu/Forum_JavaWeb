@@ -33,7 +33,7 @@ form {
 		<div class="wrap">
 			<div class="content detail">
 				<div class="fly-panel detail-box">
-					<h1>${title }</h1>
+					<h1>${data.title }</h1>
 <!-- 					<div class="fly-tip fly-detail-hint" data-id=""> -->
 <!-- 						<span class="fly-tip-stick">置顶帖</span> -->
 <!-- 						<span class="jie-admin">  -->
@@ -50,18 +50,21 @@ form {
 					<div class="detail-about">
 						<div class="jie-user" href=""> 
 							<img src="res/images/uer.jpg" alt="头像"> 
-								<cite> ${username } <em>发布</em> </cite> </div>
-<!-- 						<div class="detail-hits" data-id="{{rows.id}}"> -->
-<!-- 							 <span class="layui-btn layui-btn-mini jie-admin"> -->
-<!-- 							 	<a href="#">已完帖，无法编辑</a> </span>  -->
-<!-- 							 <span class="layui-btn layui-btn-mini jie-admin" type="collect" data-type="add">  -->
-<!-- 							 	<a id="collectPost">收藏</a> </span>  -->
-<!-- 							 <span class="layui-btn layui-btn-mini jie-admin  layui-btn-danger" type="collect" data-type="add">  -->
-<!-- 							 	<a>取消收藏</a> </span> -->
-<!-- 						</div> -->
+								<cite> ${data.username } <em>发布</em> </cite> </div>
+								<c:if test="${user.admin }"> 
+									<div class="detail-hits" data-id="{{rows.id}}">
+			<!-- 							 <span class="layui-btn layui-btn-mini jie-admin"> -->
+			<!-- 							 	<a href="#">已完帖，无法编辑</a> </span>  -->
+			<!-- 							 <span class="layui-btn layui-btn-mini jie-admin" type="collect" data-type="add">  -->
+			<!-- 							 	<a id="collectPost">收藏</a> </span>  -->
+										 <span class="layui-btn layui-btn-mini jie-admin  layui-btn-danger" type="collect" data-type="add"> 
+										 	<a href="${pageContext.request.contextPath }/DeleDataServlet?delId=${data.id }" >删除</a>
+										 </span>
+									</div>
+								</c:if>
 					</div>
 					<div class="detail-body photos" style="margin-bottom: 20px;">
-						<p>${content }</p>
+						<p>${data.content }</p>
 					</div>
 				</div>
 				<div class="fly-panel detail-box" style="padding-top: 0;">
@@ -87,18 +90,21 @@ form {
 							<div class="detail-body jieda-body">
 								<p>${answer.content }</p>
 							</div>
-							
-<!-- 							<div class="jieda-reply"> -->
+							<div class="jieda-reply">
 <!-- 								<span class="jieda-zan zanok" type="zan"> -->
 <!-- 									<i class="iconfont icon-zan"></i> -->
 <!-- 									<em>12</em> -->
 <!-- 								</span>  -->
-<!--  								<div class="jieda-admin"> -->
-<!-- 					                <span type="del"><a href="#" class="layui-btn layui-btn-danger layui-btn-small">删除</a></span> -->
+							<c:if test="${user.admin }"> 
+ 								<div class="jieda-admin">
+					                <span type="del">
+					                <a href="${pageContext.request.contextPath }/DeleAnswerServlet?delId=${answer.id }&id=${data.id }" class="layui-btn layui-btn-danger layui-btn-small">删除</a></span>
+					                </span>
 <!-- 									<span class="jieda-accept" type="accept"> -->
 <!-- 									<a href="#" class="layui-btn  layui-btn-small">采纳</a></span> -->
-<!--                					</div> -->
-<!-- 							</div> -->
+               					</div>
+               				</c:if>
+							</div>
 						</li>
 						</c:forEach>
 

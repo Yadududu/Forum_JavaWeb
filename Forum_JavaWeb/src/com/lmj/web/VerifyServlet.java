@@ -13,7 +13,7 @@ import com.lmj.model.User;
 import com.lmj.service.UserService;
 
 //@WebServlet("/VerifyUsername")
-public class VerifyUsername extends HttpServlet {
+public class VerifyServlet extends HttpServlet {
 	//ajax
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -25,7 +25,7 @@ public class VerifyUsername extends HttpServlet {
 				response.getWriter().append("{\"isSuccess\":"+!isEmpty+"}");
 				return;
 			}
-			boolean isExist = userService.FindUser(username);
+			boolean isExist = userService.isExistUserbyUsername(username);
 			response.getWriter().append("{\"isSuccess\":"+!isExist+"}");
 		}
 		

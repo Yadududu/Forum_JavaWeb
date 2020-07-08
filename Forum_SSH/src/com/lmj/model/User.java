@@ -1,12 +1,43 @@
 package com.lmj.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class User {
 
-	private Integer id;
+	private String id;
 	private String username;
 	private String password;
 	private String phonenum;
+	private Boolean admin;
 	private String checkPassword;
+	
+	private Set<Data> dataSet = new HashSet<Data>();
+	private Set<Answer> answerSet = new HashSet<Answer>();
+
+	public Boolean getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Boolean admin) {
+		this.admin = admin;
+	}
+
+	public Set<Data> getDataSet() {
+		return dataSet;
+	}
+
+	public void setDataSet(Set<Data> dataSet) {
+		this.dataSet = dataSet;
+	}
+
+	public Set<Answer> getAnswerSet() {
+		return answerSet;
+	}
+
+	public void setAnswerSet(Set<Answer> answerSet) {
+		this.answerSet = answerSet;
+	}
 
 	public String getCheckPassword() {
 		return checkPassword;
@@ -15,12 +46,11 @@ public class User {
 	public void setCheckPassword(String checkPassword) {
 		this.checkPassword = checkPassword;
 	}
-
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

@@ -7,24 +7,30 @@ import com.lmj.model.Data;
 
 public class DataService {
 	
-	public List<Data> GetDatas() {
+	public List<Data> FindAllData() {
 		DataDao dataDao = new DataDao();
-		return dataDao.GetAllData();
+		return dataDao.FindAllData();
 	}
 
-	public Data GetData(int dataID) {
+	public Data FindDatabyId(int dataID) {
 		DataDao dataDao = new DataDao();
-		return dataDao.GetData(dataID);
+		return dataDao.FindDatabyId(dataID);
 	}
 
-	public int AddData(Data data) {
+	public int InsertData(Data data) {
 		DataDao dataDao = new DataDao();
-		dataDao.AddData(data);
-		return dataDao.GetID(data);
+		dataDao.InsertData(data);
+		Data d = dataDao.FindDatabyTitleAndContentAndUId(data.getTitle(),data.getContent(),data.getU_id());
+		return d.getId();
 	}
-	public void UpdateAnsnum(Integer id) {
+	public void UpdateDataAnsnum(Integer id,int i) {
 		DataDao dataDao = new DataDao();
-		Data data = GetData(id);
-		dataDao.UpdateAnsnum(id,data.getAnsnum()+1);
+		Data data = dataDao.FindDatabyId(id);
+		dataDao.UpdateDataAnsnum(id,data.getAnsnum()+i);
+	}
+
+	public void DeleDataById(int id) {
+		DataDao dataDao = new DataDao();
+		dataDao.DeleDataById(id);
 	}
 }

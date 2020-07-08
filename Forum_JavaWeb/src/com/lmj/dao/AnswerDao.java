@@ -15,7 +15,7 @@ public class AnswerDao {
 
 	public List<Answer> FindAllAnswer(int dataID) {
 		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
-		String sql = "SELECT * FROM data join answer on data.id = answer.d_id where data.id=?;";
+		String sql = "select * from answer join user on user.id=answer.u_id where d_id=?;";
 		List<Answer> answers = new ArrayList<Answer>();
 		try {
 			answers = runner.query(sql, new BeanListHandler<Answer>(Answer.class),dataID);
@@ -26,12 +26,25 @@ public class AnswerDao {
 		return answers;
 	}
 
-	public int AddAnswer(Answer answer) {
+	public int InsertAnswer(Answer answer) {
 		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
 		String sql = "insert into answer(content,u_id,d_id) value(?,?,?);";
 		int temp = 0;
 		try {
 			temp = runner.update(sql, answer.getContent(),answer.getU_id(),answer.getD_id());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return temp;
+	}
+
+	public int DeleAnswerById(int id) {
+		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
+		String sql = "delete from answer swhere id=?;";
+		int temp = 0;
+		try {
+			temp = runner.update(sql, id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

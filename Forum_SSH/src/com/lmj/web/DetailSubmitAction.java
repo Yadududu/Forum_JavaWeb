@@ -1,5 +1,8 @@
 package com.lmj.web;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.apache.struts2.dispatcher.HttpParameters;
 
 import com.lmj.model.Answer;
@@ -19,16 +22,20 @@ public class DetailSubmitAction extends ActionSupport implements ModelDriven<Ans
 		User user = (User) ActionContext.getContext().getSession().get("user");
 		answer.setU_id(user.getId());
 		HttpParameters paras = ActionContext.getContext().getParameters();
-		answer.setD_id(Integer.parseInt(paras.get("id").toString()));
+		answer.setD_id(paras.get("id").toString());
+		Date date = new Date(System.currentTimeMillis());
+		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		String time = format.format(date);
+		answer.setAtime(time);
 		
 		AnswerService answerService = new AnswerService();
-		answerService.AddAnswer(answer);
+		answerService.InsertAnswer(answer);
 		
 		//»Ø´ðÊý+1
 		DataService dataService = new DataService();
-		dataService.UpdateAnsnum(answer.getD_id());
+		dataService.UpdateAnsnum(answer.getD_id(),1);
 		
-		ActionContext.getContext().put("id", answer.getD_id());
+		ActionContext.getContext().put("did", answer.getD_id());
 		
 		return "success";
 	}

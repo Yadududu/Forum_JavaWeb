@@ -24,12 +24,12 @@ public class ApplicationListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent arg0)  { 
     	System.out.println("≥ı ºªØ“≥√Ê");
     	DataService dataService = new DataService();
-		List<Data> datas = dataService.GetDatas();
+		List<Data> datas = dataService.FindAllData();
 		
-		UserService userService = new UserService();
-		for(Data d:datas) {
-			d.setUsername(userService.FindUsername(d.getU_id()));
-		}
+//		UserService userService = new UserService();
+//		for(Data d:datas) {
+//			d.setUsername(userService.FindUsernamebyId(d.getU_id()));
+//		}
 		
 		arg0.getServletContext().setAttribute("initDatas", datas);
 		

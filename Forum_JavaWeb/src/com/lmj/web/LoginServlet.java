@@ -21,12 +21,11 @@ public class LoginServlet extends HttpServlet {
 		UserService userService = new UserService();
 		user.setUsername(request.getParameter("username"));
 		user.setPassword(request.getParameter("password"));
-		int userID = userService.FindUserId(user);
-		user.setId(userID);
+		User u = userService.FindUserbyUsernameAndPassword(user);
 		
-		if (userID!=0) {
+		if (u!=null) {
 			System.out.println("µÇÂ½³É¹¦");
-			request.getSession().setAttribute("user",user);
+			request.getSession().setAttribute("user",u);
 			response.sendRedirect(request.getContextPath() + "/index.jsp");
 
 		} else {

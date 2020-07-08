@@ -6,28 +6,20 @@ import com.sun.org.apache.xml.internal.resolver.helpers.Debug;
 
 public class UserService {
 
-	public int FindUserId(User user) {
+	public User FindUserbyUsernameAndPassword(User user) {
 		UserDao userDao = new UserDao();
-		User u = userDao.FindUserId(user);
-		if(u!=null) {
-			return u.getId();
-		}else {
-			return 0;
-		}
+		User u = userDao.FindUserbyUsernameAndPassword(user.getUsername(),user.getPassword());
+		return u!=null?u:null;
 	}
-	public boolean FindUser(String username) {
+	public boolean isExistUserbyUsername(String username) {
 		UserDao userDao = new UserDao();
-		User user = userDao.FindUser(username);
-		if(user!=null) {
-			return true;
-		}else {
-			return false;
-		}
+		User user = userDao.FindUserbyUsername(username);
+		return user!=null?true:false;
 	}
 
-	public boolean RegisterUser(User user) {
+	public boolean InsertUser(User user) {
 		UserDao userDao = new UserDao();
-		User u = userDao.FindUser(user.getUsername());
+		User u = userDao.FindUserbyUsername(user.getUsername());
 		if(u==null) {
 			userDao.InsertUser(user);
 			return true;
@@ -36,15 +28,15 @@ public class UserService {
 		}
 	}
 
-	public Boolean UpdateUser(User user) {
+	public Boolean UpdateUserPassword(User user) {
 		UserDao userDao = new UserDao();
-		int temp = userDao.UpdateUser(user);
+		int temp = userDao.UpdateUserPassword(user);
 		return temp==0?false:true;
 	}
 	
-	public String FindUsername(Integer id) {
+	public String FindUsernamebyId(Integer id) {
 		UserDao userDao = new UserDao();
-		User user= userDao.FindUsername(id);
+		User user= userDao.FindUserbyId(id);
 		return user.getUsername();
 	}
 
