@@ -42,8 +42,8 @@ build/
 gen/
  
 # Eclipse project files
-.classpath
-.project
+# .classpath
+# .project
 .DS_Store
 /.metadata/
 /.recommenders/
