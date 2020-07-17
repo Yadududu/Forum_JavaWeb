@@ -47,3 +47,8 @@ gen/
 .DS_Store
 /.metadata/
 /.recommenders/
+
+# IntelliJ project files
+*.iml
+.idea/
+/out/
