@@ -1,4 +1,4 @@
-/.settings/
+.settings/
 /target/
  
 # Built application files and Maven
@@ -42,13 +42,13 @@ build/
 gen/
  
 # Eclipse project files
-# .classpath
-# .project
+.classpath
+.project
 .DS_Store
-/.metadata/
-/.recommenders/
+.metadata/
+.recommenders/
+Servers/
 
-# IntelliJ project files
-*.iml
+# Idea project files
 .idea/
-/out/
+out/
