@@ -50,5 +50,6 @@ gen/
 Servers/
 
 # Idea project files
+*.iml
 .idea/
 out/
