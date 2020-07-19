@@ -50,7 +50,7 @@ public class UserService {
 		return u==null?true:false;
 	}
 
-	public Boolean UpdateUserPassword(User user) {
+	public boolean UpdateUserPassword(User user) {
 		UserDao userDao = new UserDao();
 		Transaction transaction = HibernateUtils.getCurrentSession().beginTransaction();
 		try {

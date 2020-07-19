@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.lmj.dao.UserMapper">
+
+	<select id="FindUserbyUsernameAndPassword" resultType="com.lmj.model.User">
+		Select * From user where username = #{username} and password = #{password}
+	</select>
+	
+	<select id="FindUserbyUsername" parameterType="String" resultType="com.lmj.model.User">
+		Select * From user where username = #{value}
+	</select>
+	
+	<select id="FindUserbyId" parameterType="String" resultType="com.lmj.model.User">
+		Select * From user where id = #{id}
+	</select>
+	
+	<select id="InsertUser" parameterType="com.lmj.model.User">
+		insert into user(username,password,phonenum) value(#{username},#{password},#{phonenum})
+	</select>
+	
+	<select id="UpdateUserPassword" parameterType="com.lmj.model.User">
+		Update User set password = #{password} where username = #{username} and phonenum = #{phonenum}
+	</select>
+	
+</mapper>
