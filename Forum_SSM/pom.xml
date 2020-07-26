@@ -42,6 +42,16 @@
 		    <artifactId>spring-core</artifactId>
 		    <version>${spring.version}</version>
 		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-beans</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-expression</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
 	 	<dependency>
 		   <groupId>org.springframework</groupId>
 		   <artifactId>spring-web</artifactId>
@@ -119,6 +129,14 @@
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-core</artifactId>
 	</dependency>
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-beans</artifactId>
+	</dependency>
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-expression</artifactId>
+	</dependency>
  	<dependency>
 	   <groupId>org.springframework</groupId>
 	   <artifactId>spring-web</artifactId>
@@ -174,9 +192,10 @@
 	</dependency>
 	
 	<dependency>
-	    <groupId>c3p0</groupId>
+	    <groupId>com.mchange</groupId>
 	    <artifactId>c3p0</artifactId>
-	    <version>0.9.1.2</version>
+	    <version>0.9.5.2</version>
+	    <type>jar</type>
     </dependency>
 
 	<!-- <dependency>
@@ -200,11 +219,11 @@
 	    <version>${aopalliance.version}</version>
 	</dependency>
 	
-	<!-- <dependency>
+	<dependency>
 	    <groupId>org.aspectj</groupId>
 	    <artifactId>com.springsource.org.aspectj.weaver</artifactId>
 	    <version>${aspectj.weaver.version}</version>
-	</dependency> -->
+	</dependency>
 	<!-- aop end -->
 	
 	<!-- logging -->

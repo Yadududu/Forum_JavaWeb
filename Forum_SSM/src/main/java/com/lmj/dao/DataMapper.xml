@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.lmj.dao.DataMapper">
+
+	<!-- 一对一 -->
+	<resultMap type="Data" id="datalist">
+		<id property="id" column="id" />
+		<result property="dtime" column="dtime" />
+		<result property="title" column="title" />
+		<result property="dcontent" column="dcontent" />
+		<result property="ansnum" column="ansnum" />
+		<result property="u_id" column="u_id" />
+		<result property="username" column="username" /> 
+		<association property="user" javaType="User">
+			<id property="id" column="id" />
+			<result property="username" column="username" />
+		</association>
+	</resultMap>
+	<select id="FindAllData" resultMap="datalist">
+		SELECT 
+		user.username,
+		data.id,
+		data.title,
+		data.dcontent,
+		data.ansnum,
+		data.u_id,
+		data.dtime 
+		FROM user 
+		join data 
+		on user.id = data.u_id
+	</select>
+	
+	<select id="FindDataById" parameterType="String" resultType="Data">
+		SELECT 
+		user.username,
+		data.id,
+		data.title,
+		data.dcontent,
+		data.ansnum,
+		data.u_id,
+		data.dtime 
+		FROM user 
+		join data 
+		on user.id = data.u_id 
+		where data.id = #{dataId}
+	</select>
+	
+	<insert id="InsertData" parameterType="Data">
+		<selectKey keyProperty="id" resultType="string" order="BEFORE">
+			select replace(uuid(), '-', '') as id from dual
+		</selectKey>
+		insert into data(id,title,dtime,dcontent,ansnum,u_id) value(#{id},#{title},#{dtime},#{dcontent},#{ansnum},#{u_id})
+	</insert>
+	
+	<select id="FindDataByTitleAndContentAndUId" resultType="Data">
+		SELECT * FROM data where title = #{title} and dcontent = #{dcontent} and u_id = #{uid}
+	</select>
+	
+	<select id="UpdateDataAnsnum">
+		update data set ansnum = #{ansnum} where id = #{id}
+	</select>
+	
+	<select id="DeleteDataById" parameterType="String">
+		delete from data where id = #{dataId}
+	</select>
+	
+	<resultMap type="Data" id="datas">
+		<id property="id" column="id" />
+		<result property="dtime" column="dtime" />
+		<result property="title" column="title" />
+		<result property="dcontent" column="dcontent" />
+		<result property="ansnum" column="ansnum" />
+		<result property="u_id" column="u_id" />
+		<result property="username" column="username" /> 
+	</resultMap>
+	<select id="FindAllData" parameterType="data" resultMap="datas">
+		SELECT * FROM data where title = #{data.title} and dcontent = #{data.dcontent} and u_id = #{data.u_id}
+	</select>
+	
+</mapper>

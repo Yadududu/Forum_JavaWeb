@@ -41,7 +41,7 @@ public class AnswerDao {
 
 	public int DeleAnswerById(int id) {
 		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
-		String sql = "delete from answer swhere id=?;";
+		String sql = "delete from answer where id=?;";
 		int temp = 0;
 		try {
 			temp = runner.update(sql, id);

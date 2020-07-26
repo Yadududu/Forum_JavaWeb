@@ -8,11 +8,14 @@ public interface DataService {
 	
 	public List<Data> FindAllData();
 
-	public Data FindDatabyId(int dataID);
-
-	public int InsertData(Data data);
+	public Data FindDataById(String dataID);
 	
-	public void UpdateDataAnsnum(Integer id,int i);
+	public String FindDataIdByData(Data data);
 
-	public void DeleDataById(int id);
+	public void InsertData(Data data);
+	
+	public void UpdateDataAnsnum(String dataID,int ansnum);
+
+	public void DeleteDataById(String dataID);
+	
 }

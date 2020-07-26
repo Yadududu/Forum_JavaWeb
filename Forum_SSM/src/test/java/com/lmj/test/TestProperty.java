@@ -2,6 +2,8 @@ package com.lmj.test;
 
 import java.io.InputStream;
 
+import javax.annotation.Resource;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -18,8 +20,8 @@ import com.lmj.dao.UserMapper;
 import com.lmj.model.User;
 import com.lmj.service.UserService;
 
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration("classpath:applicationContext.xml")
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:applicationContext.xml")
 public class TestProperty {
 	
 //	@Resource(name="user3")
@@ -34,39 +36,38 @@ public class TestProperty {
 //		System.out.println(user.toString());
 //	}
 	
+//	@Test
+//	public void TestMybatis() throws Exception {
+//		//加载配置文件
+//		InputStream in = Resources.getResourceAsStream("sqlMapConfig.xml");
+//		//创建SqlSessionFactory对象
+//		SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(in);
+//		//创建SqlSession对象
+//		SqlSession session = factory.openSession();
+//		//获取到代理对象
+//		UserMapper u = session.getMapper(UserMapper.class);
+//		
+//		User user = u.FindUserById("1");
+//		System.out.println(user.toString());
+//		
+//		session.close();
+//		in.close();
+//	}
+	
+//	@Autowired
+	@Resource(name="sqlSessionFactory")
+	SqlSessionFactory factory;
+	
 	@Test
-	public void TestMybatis() throws Exception {
-		//加载配置文件
-		InputStream in = Resources.getResourceAsStream("sqlMapConfig.xml");
-		//创建SqlSessionFactory对象
-		SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(in);
-		//创建SqlSession对象
+	public void TestService() {
+//		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+//		SqlSessionFactory factory = (SqlSessionFactory) ac.getBean("sqlSessionFactory");
 		SqlSession session = factory.openSession();
-		//获取到代理对象
-		UserMapper u = session.getMapper(UserMapper.class);
 		
-		User user = u.FindUserbyId("1");
-		System.out.println(user.toString());
+		UserMapper userMapper = session.getMapper(UserMapper.class);
+		User user = userMapper.FindUserById("1");
+		System.out.println(user);
 		
-		session.close();
-		in.close();
-	}
-	
-	@Autowired
-	private UserService userService;
-	
-	@Test
-	public void Test() {
-		
-		String user = userService.FindUsernamebyId("1");
-		System.out.println(user.toString());
-	}
-	
-	@Autowired
-	private UserMapper userDao;
-
-	public String FindUsernamebyId() {
-		User user= userDao.FindUserbyId("1");
-		return user.getUsername();
+//		((ClassPathXmlApplicationContext)ac).close();
 	}
 }

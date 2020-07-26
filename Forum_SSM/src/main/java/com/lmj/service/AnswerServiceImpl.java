@@ -2,28 +2,26 @@ package com.lmj.service;
 
 import java.util.List;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.lmj.dao.AnswerDao;
-import com.lmj.dao.UserMapper;
+import com.lmj.dao.AnswerMapper;
 import com.lmj.model.Answer;
 
-
+@Service
 public class AnswerServiceImpl implements AnswerService{
 	
+	@Autowired
+	private AnswerMapper answerDao;
 	
-	public List<Answer> FindAllAnswer(int dataID) {
-		AnswerDao answerDao = new AnswerDao();
+	public List<Answer> FindAllAnswer(String dataID) {
 		return answerDao.FindAllAnswer(dataID);
 	}
 
-	public boolean InsertAnswer(Answer answer) {
-		AnswerDao answerDao = new AnswerDao();
-		int temp = answerDao.InsertAnswer(answer);
-		return temp==0?false:true;
+	public void InsertAnswer(Answer answer) {
+		answerDao.InsertAnswer(answer);
 	}
-	public void DeleAnswerById(int id) {
-		AnswerDao answerDao = new AnswerDao();
-		answerDao.DeleAnswerById(id);
+	public void DeleteAnswerById(String answerId) {
+		answerDao.DeleteAnswerById(answerId);
 	}
 }

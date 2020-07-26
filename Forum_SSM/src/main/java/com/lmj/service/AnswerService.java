@@ -6,10 +6,10 @@ import com.lmj.model.Answer;
 
 public interface  AnswerService {
 
-	public List<Answer> FindAllAnswer(int dataID);
+	public List<Answer> FindAllAnswer(String dataID);
 
-	public boolean InsertAnswer(Answer answer);
+	public void InsertAnswer(Answer answer);
 	
-	public void DeleAnswerById(int id);
+	public void DeleteAnswerById(String answerid);
 	
 }

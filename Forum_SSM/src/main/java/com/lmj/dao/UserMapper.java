@@ -14,13 +14,16 @@ import com.lmj.model.User;
 //@Mapper
 public interface UserMapper {
 
-	public User FindUserbyUsernameAndPassword(@Param("username")String username,
+	public User FindUserByUsernameAndPassword(@Param("username")String username,
 											@Param("password") String password);
 	
-	public User FindUserbyUsername(String username);
+	public User FindUserByUsername(String username);
 	
 //	@Select("select * from user where id = #{id}")
-	public User FindUserbyId(String id);
+	public User FindUserById(String id);
+	
+	public User FindUserByUsernameAndPhonenum(@Param("username")String username,
+											@Param("phonenum") String phonenum);
 	
 	public void InsertUser(User user);
 	

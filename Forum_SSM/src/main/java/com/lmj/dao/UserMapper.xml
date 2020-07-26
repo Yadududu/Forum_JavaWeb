@@ -5,21 +5,28 @@
   
 <mapper namespace="com.lmj.dao.UserMapper">
 
-	<select id="FindUserbyUsernameAndPassword" resultType="com.lmj.model.User">
+	<select id="FindUserByUsernameAndPassword" resultType="com.lmj.model.User">
 		Select * From user where username = #{username} and password = #{password}
 	</select>
 	
-	<select id="FindUserbyUsername" parameterType="String" resultType="com.lmj.model.User">
+	<select id="FindUserByUsername" parameterType="String" resultType="com.lmj.model.User">
 		Select * From user where username = #{value}
 	</select>
 	
-	<select id="FindUserbyId" parameterType="String" resultType="com.lmj.model.User">
+	<select id="FindUserById" parameterType="String" resultType="com.lmj.model.User">
 		Select * From user where id = #{id}
 	</select>
 	
-	<select id="InsertUser" parameterType="com.lmj.model.User">
-		insert into user(username,password,phonenum) value(#{username},#{password},#{phonenum})
+	<select id="FindUserByUsernameAndPhonenum" resultType="com.lmj.model.User">
+		Select * From user where username = #{username} and phonenum = #{phonenum}
 	</select>
+	
+	<insert id="InsertUser" parameterType="com.lmj.model.User">
+		<selectKey keyProperty="id" resultType="String" order="BEFORE">
+			select replace(uuid(), '-', '') as id from dual
+		</selectKey>
+		insert into user(id,admin,username,password,phonenum) value(#{id},0,#{username},#{password},#{phonenum})
+	</insert>
 	
 	<select id="UpdateUserPassword" parameterType="com.lmj.model.User">
 		Update User set password = #{password} where username = #{username} and phonenum = #{phonenum}
