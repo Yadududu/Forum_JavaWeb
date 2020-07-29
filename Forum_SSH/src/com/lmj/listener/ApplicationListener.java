@@ -28,6 +28,7 @@ public class ApplicationListener implements ServletContextListener {
     	
 //    	UserService userService = new UserService();
 //    	datas.forEach(data->data.setUsername(userService.FindUsernamebyId(data.getU_id())));
+
     	arg0.getServletContext().setAttribute("initDatas", datas);
     }
 	

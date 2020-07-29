@@ -17,7 +17,7 @@ public class AddServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Data data = new Data();
 		data.setTitle(request.getParameter("title"));
-		data.setContent(request.getParameter("content"));
+		data.setDcontent(request.getParameter("content"));
 		data.setAnsnum(0);
 		User user = (User) request.getSession().getAttribute("user");
 		data.setU_id(user.getId());

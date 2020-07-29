@@ -26,9 +26,9 @@
   	<url-pattern>/index.jsp</url-pattern>
   </filter-mapping>
   
-  <listener>
-    <listener-class>com.lmj.listener.ApplicationListener</listener-class>
-  </listener>
+<!--   <listener> -->
+<!--     <listener-class>com.lmj.listener.ApplicationListener</listener-class> -->
+<!--   </listener> -->
   <listener>
     <listener-class>com.lmj.listener.SessionListener</listener-class>
   </listener>

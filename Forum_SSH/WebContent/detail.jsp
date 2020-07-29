@@ -50,7 +50,7 @@ form {
 					<div class="detail-about">
 						<div class="jie-user" href=""> 
 							<img src="res/images/uer.jpg" alt="头像"> 
-								<cite> ${data.username } <em>${data.dtime } 发布</em> </cite>  </div>
+								<cite> ${data.user.username } <em>${data.dtime } 发布</em> </cite>  </div>
 								<s:if test="#session.user.admin">
 									<div class="detail-hits" data-id="{{rows.id}}">
 <%-- 									 <span class="layui-btn layui-btn-mini jie-admin"> --%>
@@ -78,7 +78,7 @@ form {
 								<a class="jie-user" href=""> 
 								<img src="res/images/uer.jpg" alt=""> 
 								<cite> 
-									<i>${answer.username }</i>
+									<i>${answer.user.username }</i>
 <!-- 										<em>(楼主)</em> -->
 <!--                   						<em style="color:#5FB878">(管理员)</em> -->
                 				</cite> </a>

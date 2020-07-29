@@ -2,20 +2,26 @@ package com.lmj.dao;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.query.NativeQuery;
 
 import com.lmj.model.Data;
+import com.lmj.model.User;
 import com.lmj.util.HibernateUtils;
 
 public class DataDao {
 	
 	public List<Data> FindAllData() {
 		Session session = HibernateUtils.getCurrentSession();
-		String sql = "SELECT user.username,data.id,data.title,data.dcontent,data.ansnum,data.u_id,data.dtime FROM user join data on user.id = data.u_id;";
+//		String sql = "SELECT user.username,data.id,data.title,data.dcontent,data.ansnum,data.u_id,data.dtime FROM user join data on user.id = data.u_id;";
+//		NativeQuery query = session.createSQLQuery(sql);
+//		query.addEntity(Data.class);
+//		List<Data> dataList = query.list();
+		
+		String sql = "SELECT * FROM data";
 		NativeQuery query = session.createSQLQuery(sql);
 		query.addEntity(Data.class);
-		
 		List<Data> dataList = query.list();
 		
 		return dataList;
@@ -23,12 +29,13 @@ public class DataDao {
 
 	public Data FindDatabyId(String dataID) {
 		Session session = HibernateUtils.getCurrentSession();
-		String sql = "SELECT user.username,data.id,data.title,data.dcontent,data.ansnum,data.u_id,data.dtime FROM user join data on user.id = data.u_id where data.id=?;";
-		NativeQuery query = session.createSQLQuery(sql);
-		query.setParameter(1, dataID);
-		query.addEntity(Data.class);
+//		String sql = "SELECT user.username,data.id,data.title,data.dcontent,data.ansnum,data.u_id,data.dtime FROM user join data on user.id = data.u_id where data.id=?;";
+//		NativeQuery query = session.createSQLQuery(sql);
+//		query.setParameter(1, dataID);
+//		query.addEntity(Data.class);
+//		Data data = (Data) query.uniqueResult();
 		
-		Data data = (Data) query.uniqueResult();
+		Data data = session.get(Data.class, dataID);
 		
 		return data;
 	}

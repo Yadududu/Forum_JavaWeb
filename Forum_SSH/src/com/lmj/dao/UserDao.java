@@ -37,7 +37,18 @@ public class UserDao {
 		
 		return user;
 	}
-	
+	public User FindUserbyUsernameAndPhonenum(String username,String phonenum) {
+		Session session = HibernateUtils.getCurrentSession();
+		String sql = "Select * From user where username=? and phonenum = ?";
+		NativeQuery query = session.createSQLQuery(sql);
+		query.setParameter(1, username);
+		query.setParameter(2, phonenum);
+		query.addEntity(User.class);
+		
+		User user = (User) query.uniqueResult();
+		
+		return user;
+	}
 	public void InsertUser(User user) {
 		Session session = HibernateUtils.getCurrentSession();
 		session.save(user);

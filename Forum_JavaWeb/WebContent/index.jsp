@@ -50,7 +50,7 @@
 									<a href="${pageContext.request.contextPath }/DetailServlet?id=${data.id }"> 
 									${data.title }</a>
 							</div>
-							<div class="qContent">${data.content }</div>
+							<div class="qContent">${data.dcontent }</div>
 							<div class="tags">
 								<!-- <span class="tag">excel</span><span class="tag">程序</span> -->
 							</div>

@@ -32,6 +32,8 @@ public class IndexFilter implements Filter {
     	
 //    	UserService userService = new UserService();
 //    	datas.forEach(data->data.setUsername(userService.FindUsernamebyId(data.getU_id())));
+    	
+//    	datas.forEach(data->System.out.println(data));
     	request.getServletContext().setAttribute("initDatas", datas);
 		chain.doFilter(request, response);
 	}

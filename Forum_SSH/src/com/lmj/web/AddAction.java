@@ -19,7 +19,6 @@ public class AddAction extends ActionSupport implements ModelDriven<Data>{
 		data.setAnsnum(0);
 		User user = (User)ActionContext.getContext().getSession().get("user");
 		data.setU_id(user.getId());
-		data.setUsername(user.getUsername());
 		Date date=new Date(System.currentTimeMillis());
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		String time = format.format(date);

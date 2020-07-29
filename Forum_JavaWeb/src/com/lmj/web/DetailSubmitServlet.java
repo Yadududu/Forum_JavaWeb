@@ -19,7 +19,7 @@ public class DetailSubmitServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Answer answer = new Answer();
-		answer.setContent(request.getParameter("content"));
+		answer.setAcontent(request.getParameter("content"));
 		answer.setU_id(((User) request.getSession().getAttribute("user")).getId());
 		answer.setD_id(Integer.parseInt(request.getParameter("id").toString()));
 		
