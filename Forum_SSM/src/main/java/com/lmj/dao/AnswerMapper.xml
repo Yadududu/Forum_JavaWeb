@@ -24,9 +24,7 @@
 		answer.u_id,
 		answer.d_id,
 		user.username 
-		from answer 
-		join user 
-		on user.id=answer.u_id 
+		from answer,user
 		where d_id = #{dataId}
 	</select>
 	

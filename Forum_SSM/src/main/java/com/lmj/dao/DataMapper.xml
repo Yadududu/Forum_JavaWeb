@@ -27,9 +27,7 @@
 		data.u_id,
 		data.dtime,
 		user.username
-		FROM user 
-		join data 
-		on user.id = data.u_id
+		FROM user,data
 	</select>
 	
 	<select id="FindDataById" parameterType="String" resultMap="datalist">
@@ -41,9 +39,7 @@
 		data.u_id,
 		data.dtime,
 		user.username
-		FROM user 
-		join data 
-		on user.id = data.u_id 
+		FROM user,data
 		where data.id = #{dataId}
 	</select>
 	

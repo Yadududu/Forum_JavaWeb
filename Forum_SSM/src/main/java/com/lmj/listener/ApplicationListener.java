@@ -4,9 +4,6 @@ import java.util.List;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import javax.servlet.annotation.WebListener;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.lmj.model.Data;
 import com.lmj.service.DataService;

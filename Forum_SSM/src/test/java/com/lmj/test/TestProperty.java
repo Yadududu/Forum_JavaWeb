@@ -123,5 +123,20 @@ public class TestProperty {
 		List<Data> datas = dataMapper.FindAllData();
 		datas.forEach(data -> System.out.println(data));
 	}
+	
+	@Test
+	public void TestFindDataById() {
 
+		DataMapper dataMapper = GetSession().getMapper(DataMapper.class);
+		List<Data> datas = dataMapper.FindDataById("1");
+		datas.forEach(data -> System.out.println(data));
+	}
+	
+	@Test
+	public void TestFindAllAnswer() {
+
+		AnswerMapper answerMapper = GetSession().getMapper(AnswerMapper.class);
+		List<Answer> answers = answerMapper.FindAllAnswer("1");
+		answers.forEach(answer -> System.out.println(answer));
+	}
 }
