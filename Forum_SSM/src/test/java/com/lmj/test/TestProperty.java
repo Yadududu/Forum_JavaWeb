@@ -138,5 +138,8 @@ public class TestProperty {
 		AnswerMapper answerMapper = GetSession().getMapper(AnswerMapper.class);
 		List<Answer> answers = answerMapper.FindAllAnswer("1");
 		answers.forEach(answer -> System.out.println(answer));
+		System.out.println("第二次查询");
+		List<Answer> answers2 = answerMapper.FindAllAnswer("1");
+		answers2.forEach(answer -> System.out.println(answer));
 	}
 }
