@@ -37,17 +37,22 @@
 		<!-- 配置数据源  -->
 		<property name="dataSource" ref="dataSource"/>
 		<!-- 告诉spring mybatis的核心配置文件 -->
-		<property name="configLocation" value="classpath:sqlMapConfig.xml"/>
+		<!--<property name="configLocation" value="classpath:sqlMapConfig.xml"/>-->
+		
+		<!-- 配置别名，使用包扫描 -->
+        <property name="typeAliasesPackage" value="com.lmj.model"></property>
 	</bean>
 	
 	<!-- mapper动态扫描开发,即创建SqlSession对象 -->
 	<bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.lmj.dao"/>
+		<!-- 可选，如果不写，Spring启动时候。容器中。自动会按照类型去把SqlSessionFactory对象注入进来 -->
+        <!-- <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/> -->
 	</bean>
 	
 <!-- 	<bean name="userMapper" class="com.lmj.dao.UserMapper"></bean> -->
 	<!-- service -->
-<!--  	<bean name="userService" class="com.lmj.service.UserServiceImpl"></bean> -->
+<!--  	<bean name="dataService" class="com.lmj.service.DataServiceImpl"></bean> -->
  	
  	
  	<!-- 需要事务核心管理器 -->
@@ -69,7 +74,9 @@
 	<!-- public void com.lmj.service.UserServiceImpl.save() -->
 	<!-- * com.lmj.service.*ServiceImpl.*(..) -->
 	<aop:config>
+		<!-- 配置切入点 -->
 		<aop:pointcut expression="execution(* com.lmj.service.*ServiceImpl.*(..))" id="txPc"/>
+		 <!-- 配置切面= 切入点+通知 -->
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPc"/>
 	</aop:config>
 </beans>

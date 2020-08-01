@@ -12,9 +12,8 @@
 		<property name="atime" column="atime"></property>
 		<property name="d_id" column="d_id"></property>
 		<property name="u_id" column="u_id"></property>
-		<property name="username"></property>
 		
-		<many-to-one name="user" column="u_id" class="User" insert="false" update="false"></many-to-one>
+		<many-to-one name="user" column="u_id" class="User" lazy="false" insert="false" update="false"></many-to-one>
 		<many-to-one name="data" column="d_id" class="Data" insert="false" update="false"></many-to-one>
 	</class>
 </hibernate-mapping>

@@ -11,7 +11,6 @@ public class Data {
 	private String dcontent;
 	private Integer ansnum;
 	private String u_id;
-	private String username;
 	
 	private User user;
 	private Set<Answer> answerSet = new HashSet<Answer>();
@@ -80,11 +79,10 @@ public class Data {
 		this.title = title;
 	}
 
-	public String getUsername() {
-		return username;
+	@Override
+	public String toString() {
+		return "Data [id=" + id + ", dtime=" + dtime + ", title=" + title + ", dcontent=" + dcontent + ", ansnum="
+				+ ansnum + ", u_id=" + u_id + ", user=" + user + "]";
 	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	
 }

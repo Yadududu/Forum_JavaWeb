@@ -39,7 +39,7 @@
     <!-- <div class="fly-none">并无权限</div> -->
 
     <div class="layui-form layui-form-pane">
-      <form action="${pageContext.request.contextPath }/AddAction" method="post">
+      <form action="${pageContext.request.contextPath }/data/addData" method="post">
         <div class="layui-form-item">
           <label for="L_title" class="layui-form-label">标题</label>
           <div class="layui-input-block">

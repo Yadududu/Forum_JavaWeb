@@ -5,8 +5,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<link rel="stylesheet" href="res/layui/css/layui.css">
-		<link rel="stylesheet" href="res/css/global.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/res/layui/css/layui.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/res/css/global.css">
 <!-- 		<script src="res/layui/layui.js"></script> -->
 		<style>
 			

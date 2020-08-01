@@ -49,17 +49,21 @@ public class UserService {
 		
 		return u==null?true:false;
 	}
-
-	public boolean UpdateUserPassword(User user) {
+	
+	public Boolean UpdateUserPassword(User user) {
 		UserDao userDao = new UserDao();
 		Transaction transaction = HibernateUtils.getCurrentSession().beginTransaction();
+		User u = null;
 		try {
-			userDao.UpdateUserPassword(user);
+			u = userDao.FindUserbyUsernameAndPhonenum(user.getUsername(), user.getPhonenum());
+			if(u!=null) {
+				userDao.UpdateUserPassword(user);
+			}
 		}catch(Exception e) {
 			transaction.rollback();
 		}
 		transaction.commit();
-		return true;
+		return u==null?false:true;
 	}
 	
 	public String FindUsernamebyId(String id) {

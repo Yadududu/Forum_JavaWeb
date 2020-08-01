@@ -13,9 +13,9 @@
 		<property name="dcontent" column="dcontent"></property>
 		<property name="ansnum" column="ansnum"></property>
 		<property name="u_id" column="u_id"></property>
-		<property name="username"></property>
 		
-		<many-to-one name="user" column="u_id" class="User" insert="false" update="false"></many-to-one>
+		<!--lazy="false" 关闭懒加载-->
+		<many-to-one name="user" column="u_id" class="User" lazy="false" insert="false" update="false"></many-to-one>
 		<set name="answerSet" cascade="all">
 			<key column="d_id"></key>
 			<one-to-many class="Answer"/>

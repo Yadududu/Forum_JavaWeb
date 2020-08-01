@@ -20,7 +20,7 @@ $(function(){
 });
 function verifyUsername(){
 	$.ajax({
-		url:encodeURI("${pageContext.request.contextPath }/VerifyAction"),
+		url:encodeURI("${pageContext.request.contextPath }/responseJson"),
 		type:"post",
 		data:{
 			username:$("input[name='username']").val()
@@ -38,7 +38,7 @@ function verifyUsername(){
 }
 function verifyPassword(){
 	$.ajax({
-		url:encodeURI("${pageContext.request.contextPath }/VerifyAction"),
+		url:encodeURI("${pageContext.request.contextPath }/responseJson"),
 		type:"post",
 		data:{
 			password:$("input[name='password']").val()
@@ -55,7 +55,7 @@ function verifyPassword(){
 }
 function verifyCheckPassword(){
 	$.ajax({
-		url:encodeURI("${pageContext.request.contextPath }/VerifyAction"),
+		url:encodeURI("${pageContext.request.contextPath }/responseJson"),
 		type:"post",
 		data:{
 			password:$("input[name='password']").val(),
@@ -73,7 +73,7 @@ function verifyCheckPassword(){
 }
 function verifyPhonenum(){
 	$.ajax({
-		url:encodeURI("${pageContext.request.contextPath }/VerifyAction"),
+		url:encodeURI("${pageContext.request.contextPath }/responseJson"),
 		type:"post",
 		data:{
 			phonenum:$("input[name='phonenum']").val()

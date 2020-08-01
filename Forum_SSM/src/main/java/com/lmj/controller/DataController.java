@@ -1,12 +1,17 @@
 package com.lmj.controller;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,6 +22,7 @@ import com.lmj.service.AnswerService;
 import com.lmj.service.DataService;
 
 @Controller
+@RequestMapping("/data")
 public class DataController {
 	
 	@Autowired
@@ -25,32 +31,33 @@ public class DataController {
 	private AnswerService answerService;
 
 	@RequestMapping("/addData")
-	public String addData(Data data,ModelMap model){
+	public String addData(Data data,HttpSession session){
 		
 		data.setAnsnum(0);
-		User user = (User) model.get("user");
+		User user = (User) session.getAttribute("user");
 		data.setU_id(user.getId());
-		data.setUsername(user.getUsername());
+//		data.setUsername(user.getUsername());
+		data.setUser(user);
+		
 		Date date=new Date(System.currentTimeMillis());
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		String time = format.format(date);
 		data.setDtime(time);
 		
 		dataService.InsertData(data);
-		String id = dataService.FindDataIdByData(data);
-		if(id=="") {
+		String dId = dataService.FindDataIdByData(data);
+		if(dId=="") {
 			System.out.println("发布失败");
 			return "add";
 		}else {
-			model.addAttribute("id", id);
 			System.out.println("发布成功");
-			return "success";
+			return "redirect:detail?dId="+dId;
 		}
 	}
 	
 	@RequestMapping("/addAnswer")
-	public String addAnswer(Answer answer,String dId,ModelMap model){
-		User user = (User) model.get("user");
+	public String addAnswer(Answer answer,String dId,HttpSession session){
+		User user = (User) session.getAttribute("user");
 		answer.setU_id(user.getId());
 		answer.setD_id(dId);
 		
@@ -64,7 +71,7 @@ public class DataController {
 		//回答数+1
 		dataService.UpdateDataAnsnum(answer.getD_id(),1);
 		
-		return "redirect:index.jsp?dId="+answer.getD_id();
+		return "redirect:detail?dId="+answer.getD_id();
 	}
 	
 	@RequestMapping("/detail")
@@ -79,12 +86,27 @@ public class DataController {
 		
 		//返回回答内容
 		List<Answer> answers=answerService.FindAllAnswer(dId);
-//		UserService userService = new UserService();
-//		answers.forEach(answer->answer.setUsername(userService.FindUsernamebyId(answer.getU_id())));
-//		answers.forEach(answer->System.out.println(answer.getUsername()));
 		model.addObject("answers",answers);
-		model.setViewName("detail.jsp");
+		model.setViewName("detail");
 		
 		return model;
+	}
+	
+	@RequestMapping("/deleData")
+	public String deleData(String delId,HttpServletRequest request,HttpServletResponse response) throws IOException {
+		dataService.DeleteDataById(delId);
+//		System.out.println("删除成功");
+		response.sendRedirect(request.getContextPath() + "/index.jsp");
+		return null;
+	}
+	
+	@RequestMapping("/deleAnswer")
+	public String deleAnswer(String delId,String dId) {
+		answerService.DeleteAnswerById(delId);
+		
+		//回答数-1
+		dataService.UpdateDataAnsnum(dId,-1);
+		
+		return "redirect:detail?dId="+dId;
 	}
 }

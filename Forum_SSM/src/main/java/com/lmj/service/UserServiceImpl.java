@@ -16,20 +16,24 @@ public class UserServiceImpl implements UserService {
 	private UserMapper userDao;
 
 	@Override
-	public User FindUserByUsernameAndPassword(String username,String password) {
-		User u = userDao.FindUserByUsernameAndPassword(username,password);
+	public User FindUserByUsernameAndPassword(User user) {
+		User u = userDao.FindUserByUsernameAndPassword(user.getUsername(), user.getPassword());
 		return u!=null?u:null;
 	}
 	@Override
 	public boolean FindUserByUsername(String username) {
-		User user = userDao.FindUserByUsername(username);
+		User u = new User();
+		u.setUsername(username);
+		User user = userDao.FindUserByUser(u);
 		return user!=null?true:false;
 	}
 	@Override
 	public String FindUsernameById(String id) {
 //		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
 //		UserMapper userMapper = (UserMapper) ac.getBean("userMapper");
-		User user = userDao.FindUserById(id);
+		User u = new User();
+		u.setId(id);
+		User user = userDao.FindUserByUser(u);
 		return user.getUsername();
 	}
 	@Override

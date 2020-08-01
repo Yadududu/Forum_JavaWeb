@@ -22,6 +22,8 @@ public class AnswerServiceImpl implements AnswerService{
 		answerDao.InsertAnswer(answer);
 	}
 	public void DeleteAnswerById(String answerId) {
-		answerDao.DeleteAnswerById(answerId);
+		Answer answer = new Answer();
+		answer.setId(answerId);
+		answerDao.DeleteAnswerByAnswer(answer);
 	}
 }

@@ -29,7 +29,30 @@
 	</insert>
 	
 	<select id="UpdateUserPassword" parameterType="com.lmj.model.User">
-		Update User set password = #{password} where username = #{username} and phonenum = #{phonenum}
+		Update user set password = #{password} where username = #{username} and phonenum = #{phonenum}
+	</select>
+	
+	<select id="FindUserByUser" parameterType="com.lmj.model.User" resultType="com.lmj.model.User">
+		Select * 
+		From user 
+		<where>
+		<!-- where标签可以去掉开头的AND -->
+			<if test="id!=null and id!=''">
+			and id = #{id}
+			</if>
+			<if test="admin!=null and admin!=''">
+			and admin = #{admin} 
+			</if>
+			<if test="username!=null and username!=''">
+			and username = #{username} 
+			</if>
+			<if test="password!=null and password!=''">
+			and password = #{password} 
+			</if>
+			<if test="phonenum!=null and phonenum!=''">
+			and phonenum = #{phonenum}
+			</if>
+		</where> 
 	</select>
 	
 </mapper>

@@ -54,7 +54,7 @@
 							<div class="quesUser">
 								<image src="images/0.gif" class="imguser" />
 								<div class="userName">
-									<s:property value="#data.username" />
+									${data.user.username }
 									 <div class="liulan"><s:property value="#data.dtime" /></div> 
 									 
 									 <s:if test="#session.user.admin">

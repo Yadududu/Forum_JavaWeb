@@ -7,7 +7,6 @@ public class Answer {
 	private String acontent;
 	private String d_id;
 	private String u_id;
-	private String username;
 	
 	private User user;
 	private Data data;
@@ -36,12 +35,6 @@ public class Answer {
 	public void setData(Data data) {
 		this.data = data;
 	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
 	public String getId() {
 		return id;
 	}
@@ -60,4 +53,10 @@ public class Answer {
 	public void setU_id(String u_id) {
 		this.u_id = u_id;
 	}
+	@Override
+	public String toString() {
+		return "Answer [id=" + id + ", atime=" + atime + ", acontent=" + acontent + ", d_id=" + d_id + ", u_id=" + u_id
+				+ ", user=" + user + ", data=" + data + "]";
+	}
+	
 }

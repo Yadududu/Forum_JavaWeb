@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.lmj.dao.AnswerMapper;
 import com.lmj.dao.DataMapper;
+import com.lmj.model.Answer;
 import com.lmj.model.Data;
 
 @Service
@@ -23,11 +24,14 @@ public class DataServiceImpl implements DataService{
 	} 
 
 	public Data FindDataById(String dataID) {
-		return dataDao.FindDataById(dataID);
+		Data d = new Data();
+		d.setId(dataID);
+		List<Data> list = dataDao.FindDataByData(d);
+		return list.get(0);
 	}
 	
 	public String FindDataIdByData(Data data) {
-		List<Data> dataList = dataDao.FindDatabyTitleAndContentAndUId(data);
+		List<Data> dataList = dataDao.FindDataByData(data);
 		return dataList!=null?dataList.get(dataList.size()-1).getId():"";
 	}
 
@@ -37,13 +41,16 @@ public class DataServiceImpl implements DataService{
 	}
 
 	public void UpdateDataAnsnum(String dataID, int ansnum) {
-		Data data = dataDao.FindDataById(dataID);
-		dataDao.UpdateDataAnsnum(dataID, data.getAnsnum() + ansnum);
+		Data d = new Data();
+		d.setId(dataID);
+		List<Data> list = dataDao.FindDataByData(d);
+		dataDao.UpdateDataAnsnum(dataID, list.get(0).getAnsnum() + ansnum);
 	}
 
 	public void DeleteDataById(String dataID) {
-//		answerDao.DeleteAnswerById(dataID);
-		answerDao.DeleteAnswerByDid(dataID);
+		Answer answer = new Answer();
+		answer.setD_id(dataID);
+		answerDao.DeleteAnswerByAnswer(answer);
 		dataDao.DeleteDataById(dataID);
 	}
 }

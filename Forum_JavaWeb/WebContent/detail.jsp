@@ -64,7 +64,7 @@ form {
 								</c:if>
 					</div>
 					<div class="detail-body photos" style="margin-bottom: 20px;">
-						<p>${data.content }</p>
+						<p>${data.dcontent }</p>
 					</div>
 				</div>
 				<div class="fly-panel detail-box" style="padding-top: 0;">
@@ -88,7 +88,7 @@ form {
 <!-- 							<i class="iconfont icon-caina" title="最佳答案"></i> -->
 							</div>
 							<div class="detail-body jieda-body">
-								<p>${answer.content }</p>
+								<p>${answer.acontent }</p>
 							</div>
 							<div class="jieda-reply">
 <!-- 								<span class="jieda-zan zanok" type="zan"> -->
@@ -98,7 +98,7 @@ form {
 							<c:if test="${user.admin }"> 
  								<div class="jieda-admin">
 					                <span type="del">
-					                <a href="${pageContext.request.contextPath }/DeleAnswerServlet?delId=${answer.id }&id=${data.id }" class="layui-btn layui-btn-danger layui-btn-small">删除</a></span>
+					                <a href="${pageContext.request.contextPath }/DeleAnswerServlet?delId=${answer.id }&did=${data.id }" class="layui-btn layui-btn-danger layui-btn-small">删除</a></span>
 					                </span>
 <!-- 									<span class="jieda-accept" type="accept"> -->
 <!-- 									<a href="#" class="layui-btn  layui-btn-small">采纳</a></span> -->

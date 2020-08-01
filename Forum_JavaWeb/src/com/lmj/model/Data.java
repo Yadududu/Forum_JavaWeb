@@ -4,7 +4,7 @@ public class Data {
 	
 	private Integer id;
 	private String title;
-	private String content;
+	private String dcontent;
 	private Integer ansnum;
 	private Integer u_id;
 	private String username;
@@ -38,12 +38,13 @@ public class Data {
 		this.title = title;
 	}
 
-	public String getContent() {
-		return content;
+
+	public String getDcontent() {
+		return dcontent;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setDcontent(String dcontent) {
+		this.dcontent = dcontent;
 	}
 
 	public String getUsername() {
@@ -53,4 +54,11 @@ public class Data {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
+	@Override
+	public String toString() {
+		return "Data [id=" + id + ", title=" + title + ", dcontent=" + dcontent + ", ansnum=" + ansnum + ", u_id="
+				+ u_id + ", username=" + username + "]";
+	}
+	
 }

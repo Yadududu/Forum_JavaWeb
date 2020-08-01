@@ -4,7 +4,7 @@ import com.lmj.model.User;
 
 public interface UserService {
 	
-	public User FindUserByUsernameAndPassword(String username,String password);
+	public User FindUserByUsernameAndPassword(User user);
 	
 	public boolean FindUserByUsername(String username);
 	
@@ -13,4 +13,6 @@ public interface UserService {
 	public boolean InsertUser(User user);
 	
 	public boolean UpdateUserPassword(User user);
+	
+	
 }

@@ -11,9 +11,21 @@
 		<result property="acontent" column="acontent" />
 		<result property="u_id" column="u_id" />
 		<result property="d_id" column="d_id" />
+		<association property="user" javaType="User">
+			<id property="id" column="id" />
+			<result property="username" column="username" />
+		</association>
 	</resultMap>
 	<select id="FindAllAnswer" parameterType="String" resultMap="answerlist">
-		select * from answer join user on user.id=answer.u_id where d_id = #{dataId}
+		select 
+		answer.id,
+		answer.atime,
+		answer.acontent,
+		answer.u_id,
+		answer.d_id,
+		user.username 
+		from answer,user
+		where d_id = #{dataId}
 	</select>
 	
 	<insert id="InsertAnswer" parameterType="com.lmj.model.Answer">
@@ -29,6 +41,25 @@
 
 	<select id="DeleteAnswerByDid" parameterType="String">
 		delete from answer where d_id = #{dataId};
+	</select>
+	
+	<select id="DeleteAnswerByAnswer" parameterType="Answer">
+		delete from answer 
+		<where>
+		<!-- where标签可以去掉开头的AND -->
+			<if test="id!=null and id!=''">
+			and id = #{id};
+			</if>
+			<if test="acontent!=null and acontent!=''">
+			and acontent = #{acontent};
+			</if>
+			<if test="d_id!=null and d_id!=''">
+			and d_id = #{d_id};
+			</if>
+			<if test="u_id!=null and u_id!=''">
+			and u_id = #{u_id};
+			</if>
+		</where> 
 	</select>
 	
 </mapper>

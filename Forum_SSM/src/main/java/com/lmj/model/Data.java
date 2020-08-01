@@ -8,7 +8,6 @@ public class Data {
 	private String dcontent;
 	private Integer ansnum;
 	private String u_id;
-	private String username;
 
 	private User user;
 
@@ -60,14 +59,6 @@ public class Data {
 		this.u_id = u_id;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
 	public User getUser() {
 		return user;
 	}
@@ -79,7 +70,7 @@ public class Data {
 	@Override
 	public String toString() {
 		return "Data [id=" + id + ", dtime=" + dtime + ", title=" + title + ", dcontent=" + dcontent + ", ansnum="
-				+ ansnum + ", u_id=" + u_id + ", username=" + username + ", user=" + user + "]";
+				+ ansnum + ", u_id=" + u_id  + ", user=" + user + "]";
 	}
 
 	
