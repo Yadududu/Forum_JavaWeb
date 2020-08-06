@@ -30,6 +30,15 @@
 		<property name="jdbcUrl" value="${jdbc.url}"/>
 		<property name="user" value="${jdbc.username}"/>
 		<property name="password" value="${jdbc.password}"/>
+		<!-- 初始化连接大小 -->
+        <property name="initialPoolSize" value="${jdbc.initialSize}"></property>
+        <!-- 连接池最大数量 -->
+        <property name="maxPoolSize" value="${jdbc.maxIdle}"></property>
+        <property name="minPoolSize" value="${jdbc.minIdle}"></property>
+        <!--acquireIncrement：链接用完了自动增量2个。 -->
+        <property name="acquireIncrement" value="${jdbc.acquireIncrement}"></property>
+        <!--acquireRetryAttempts：链接失败后重新试30次。-->
+    	<property name="acquireRetryAttempts" value="${jdbc.acquireRetryAttempts}"></property>
 	</bean>
 	
 	<!-- 配置mybatis sqlSessionFactory -->

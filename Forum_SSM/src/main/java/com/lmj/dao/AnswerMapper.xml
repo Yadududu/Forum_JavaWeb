@@ -24,8 +24,11 @@
 		answer.u_id,
 		answer.d_id,
 		user.username 
-		from answer,user
+		FROM answer
+        join user 
+        on answer.u_id=user.id
 		where d_id = #{dataId}
+		order by answer.atime
 	</select>
 	
 	<insert id="InsertAnswer" parameterType="com.lmj.model.Answer">

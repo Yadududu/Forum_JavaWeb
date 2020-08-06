@@ -27,7 +27,10 @@
 		data.u_id,
 		data.dtime,
 		user.username
-		FROM user,data
+		FROM data
+        join user 
+        on data.u_id=user.id
+        order by data.dtime DESC
 	</select>
 	
 	<select id="FindDataById" parameterType="String" resultMap="datalist">
@@ -39,7 +42,9 @@
 		data.u_id,
 		data.dtime,
 		user.username
-		FROM user,data
+		FROM data
+        join user 
+        on data.u_id=user.id
 		where data.id = #{dataId}
 	</select>
 	
@@ -64,7 +69,7 @@
 	
 	<select id="FindDataByData" parameterType="Data" resultMap="datalist">
 		SELECT * 
-		FROM data 
+		FROM data
 		<where>
 		<!-- where标签可以去掉开头的AND -->
 			<if test="id!=null and id!=''">

@@ -10,7 +10,6 @@ public interface DataMapper {
 	
 	public List<Data> FindAllData();
 	
-	/*FindDataByDataÌæ´ú**/
 	public List<Data> FindDataById(String dataId);
 
 	/*FindDataByDataÌæ´ú**/

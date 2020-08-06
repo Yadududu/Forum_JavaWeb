@@ -3,6 +3,8 @@ package com.lmj.web;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import com.lmj.model.Data;
 import com.lmj.model.User;
 import com.lmj.service.DataService;
@@ -35,6 +37,7 @@ public class AddAction extends ActionSupport implements ModelDriven<Data>{
 			System.out.println("发布成功");
 			return "success";
 		}
+		
 	}
 
 

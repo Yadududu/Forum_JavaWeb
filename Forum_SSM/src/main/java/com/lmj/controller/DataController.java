@@ -40,7 +40,7 @@ public class DataController {
 		data.setUser(user);
 		
 		Date date=new Date(System.currentTimeMillis());
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String time = format.format(date);
 		data.setDtime(time);
 		
@@ -62,7 +62,7 @@ public class DataController {
 		answer.setD_id(dId);
 		
 		Date date = new Date(System.currentTimeMillis());
-		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String time = format.format(date);
 		answer.setAtime(time);
 		
@@ -76,7 +76,7 @@ public class DataController {
 	
 	@RequestMapping("/detail")
 	public ModelAndView detail(String dId){
-		
+		System.out.println(dId);
 		ModelAndView model = new ModelAndView();
 		
 		//·µ»ØÌû×ÓÄÚÈÝ

@@ -48,6 +48,7 @@ public class IndexFilter implements Filter {
 //		DataMapper dataMapper = session.getMapper(DataMapper.class);
 //		DataService dataService = (DataService) ac.getBean(DataService.class);
 		List<Data> datas = dataService.FindAllData();
+//		datas.forEach(data->System.out.println(data));
 
 		request.getServletContext().setAttribute("initDatas", datas);
 		chain.doFilter(request, response);

@@ -24,9 +24,7 @@ public class DataServiceImpl implements DataService{
 	} 
 
 	public Data FindDataById(String dataID) {
-		Data d = new Data();
-		d.setId(dataID);
-		List<Data> list = dataDao.FindDataByData(d);
+		List<Data> list = dataDao.FindDataById(dataID);
 		return list.get(0);
 	}
 	
