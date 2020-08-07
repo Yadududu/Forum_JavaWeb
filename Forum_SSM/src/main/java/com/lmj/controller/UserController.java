@@ -1,11 +1,13 @@
 package com.lmj.controller;
 
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -95,7 +97,6 @@ public class UserController {
 
 	@RequestMapping("/login")
 	public ModelAndView login(User user) {
-
 		ModelAndView model = new ModelAndView();
 
 		User u = userService.FindUserByUsernameAndPassword(user);
@@ -114,7 +115,6 @@ public class UserController {
 
 	@RequestMapping("/logout")
 	public String logout(ModelMap model, SessionStatus sessionStatus) {
-
 		User user = (User) model.get("user");
 		if (SessionManager.SessionMap.containsKey(user.getUsername())) {
 			SessionManager.SessionMap.remove(user.getUsername());

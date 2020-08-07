@@ -39,6 +39,9 @@
         <property name="acquireIncrement" value="${jdbc.acquireIncrement}"></property>
         <!--acquireRetryAttempts：链接失败后重新试30次。-->
     	<property name="acquireRetryAttempts" value="${jdbc.acquireRetryAttempts}"></property>
+    	<!--//下面两个属性就是设置c3p0隔28800秒自动检测与数据库的连接（28800也是mysql的默认的连接超时时间）-->
+		<property name="testConnectionOnCheckin" value="${jdbc.testConnectionOnCheckin}"></property>
+		<property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"></property>
 	</bean>
 	
 	<!-- 配置mybatis sqlSessionFactory -->
