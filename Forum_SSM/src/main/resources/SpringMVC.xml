@@ -29,6 +29,9 @@
 	<mvc:resources location="/layui/" mapping="/layui/**" />
 	<mvc:resources location="/res/" mapping="/res/**" />
 
+	<!-- 配置自定义异常处理器 -->
+	<bean id="customExceptionResolver" class="com.lmj.exception.CustomExceptionResolver"/>
+
 	<!-- 开启SpringMVC框架注解的支持 -->
 	<mvc:annotation-driven />
 

@@ -109,4 +109,5 @@ public class DataController {
 		
 		return "redirect:detail?dId="+dId;
 	}
+	
 }

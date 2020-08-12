@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.lmj.exception.CustomException;
 import com.lmj.model.User;
 import com.lmj.service.UserService;
 import com.lmj.util.SessionManager;
@@ -157,5 +158,16 @@ public class UserController {
 			message = "{\"isSuccess\":" + isMatch + "}";
 		}
 		return message;
+	}
+	
+	@RequestMapping("/fail")
+	public void fail() throws CustomException {
+		System.out.println("fail()");
+		try {
+			int a=10/0;
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw new CustomException("404");
+		}
 	}
 }
