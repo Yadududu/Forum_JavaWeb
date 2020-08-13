@@ -5,6 +5,7 @@
   
 <mapper namespace="com.lmj.dao.DataMapper">
 
+	<cache/>
 	<!-- 一对一 -->
 	<resultMap type="Data" id="datalist">
 		<id property="id" column="id" />
@@ -33,7 +34,7 @@
         order by data.dtime DESC
 	</select>
 	
-	<select id="FindDataById" parameterType="String" resultMap="datalist">
+	<select id="FindDataById" parameterType="String" resultMap="datalist" useCache="false">
 		SELECT 
 		data.id,
 		data.title,
@@ -48,7 +49,7 @@
 		where data.id = #{dataId}
 	</select>
 	
-	<select id="FindDataByTitleAndContentAndUId" resultMap="datalist">
+	<select id="FindDataByTitleAndContentAndUId" resultMap="datalist" useCache="false">
 		SELECT * FROM data where title = #{title} and dcontent = #{dcontent} and u_id = #{uid}
 	</select>
 	
@@ -59,15 +60,15 @@
 		insert into data(id,title,dtime,dcontent,ansnum,u_id) value(#{id},#{title},#{dtime},#{dcontent},#{ansnum},#{u_id})
 	</insert>
 	
-	<select id="UpdateDataAnsnum">
+	<update id="UpdateDataAnsnum" >
 		update data set ansnum = #{ansnum} where id = #{id}
-	</select>
+	</update>
 	
-	<select id="DeleteDataById" parameterType="String">
+	<delete id="DeleteDataById" parameterType="String" >
 		delete from data where id = #{dataId}
-	</select>
+	</delete>
 	
-	<select id="FindDataByData" parameterType="Data" resultMap="datalist">
+	<select id="FindDataByData" parameterType="Data" resultMap="datalist" useCache="false">
 		SELECT * 
 		FROM data
 		<where>

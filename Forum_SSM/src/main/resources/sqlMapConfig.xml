@@ -4,8 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
 <configuration>
+	
+	<settings>
+		<!-- 打开延迟加载 的开关 -->
+ 		<!--<setting name="lazyLoadingEnabled" value="true"/> -->
+		<!-- 将积极加载改为消极加载即按需要加载 -->
+ 		<!--<setting name="aggressiveLazyLoading" value="false"/> -->
+		<!-- 开启二级缓存  默认也是开启的-->
+  		<!--<setting name="cacheEnabled" value="true"/>  -->
+		<!-- 打印日志 -->
+		<setting name="logImpl" value="LOG4J"></setting>
+	</settings>
 	<!-- 读取配置文件 -->
-<!-- 	<properties resource = "db.properties" /> -->
+ 	<!--<properties resource = "db.properties" /> -->
 	
 	<!--  推荐使用package包的形式来配置别名
 			包的形式会扫描主包及子包下的所有文件
@@ -15,7 +26,6 @@
 		<!-- 	<typeAlias type="com.lmj.bean.User" alias="user"/> -->
 		<package name="com.lmj.model"/>
 	</typeAliases>
-	
 	<!-- 在集成spring 是不用 -->
 <!-- 	<environments default="development"> -->
 <!-- 		<environment id="development"> -->

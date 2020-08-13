@@ -1,6 +1,8 @@
 package com.lmj.model;
 
-public class Answer {
+import java.io.Serializable;
+
+public class Answer implements Serializable {
 	
 	private String id;
 	private String atime;

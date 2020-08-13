@@ -49,10 +49,10 @@
 		<!-- 配置数据源  -->
 		<property name="dataSource" ref="dataSource"/>
 		<!-- 告诉spring mybatis的核心配置文件 -->
-		<!--<property name="configLocation" value="classpath:sqlMapConfig.xml"/>-->
+		<property name="configLocation" value="classpath:sqlMapConfig.xml"/>
 		
 		<!-- 配置别名，使用包扫描 -->
-        <property name="typeAliasesPackage" value="com.lmj.model"></property>
+        <!--<property name="typeAliasesPackage" value="com.lmj.model"></property>-->
 	</bean>
 	
 	<!-- mapper动态扫描开发,即创建SqlSession对象 -->

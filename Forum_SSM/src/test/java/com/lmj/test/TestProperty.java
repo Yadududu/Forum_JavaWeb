@@ -118,10 +118,24 @@ public class TestProperty {
 
 	@Test
 	public void TestFindAllData() {
-
-		DataMapper dataMapper = GetSession().getMapper(DataMapper.class);
+		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+		SqlSessionFactory factory = (SqlSessionFactory) ac.getBean("sqlSessionFactory");
+		SqlSession session = factory.openSession();
+		
+		
+		DataMapper dataMapper = session.getMapper(DataMapper.class);
 		List<Data> datas = dataMapper.FindAllData();
 		datas.forEach(data -> System.out.println(data));
+		session.commit();
+		session.close();
+		System.out.println("------------");
+		//第二次查询
+		SqlSession session2 = factory.openSession();
+		DataMapper dataMapper2 = session2.getMapper(DataMapper.class);
+		List<Data> ds = dataMapper2.FindAllData();
+		ds.forEach(data -> System.out.println(data));
+		session2.commit();
+		session2.close();
 	}
 	
 	@Test
