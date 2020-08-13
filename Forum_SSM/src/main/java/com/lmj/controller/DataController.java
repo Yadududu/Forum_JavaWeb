@@ -45,8 +45,8 @@ public class DataController {
 		String time = format.format(date);
 		data.setDtime(time);
 		
-		dataService.InsertData(data);
-		String dId = dataService.FindDataIdByData(data);
+		data = dataService.InsertData(data);
+		String dId = data.getId();
 		if(dId=="") {
 			System.out.println("·¢²¼Ê§°Ü");
 			return "add";

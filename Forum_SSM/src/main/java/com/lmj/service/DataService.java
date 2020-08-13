@@ -12,7 +12,7 @@ public interface DataService {
 	
 	public String FindDataIdByData(Data data);
 
-	public void InsertData(Data data);
+	public Data InsertData(Data data);
 	
 	public void UpdateDataAnsnum(String dataID,int ansnum);
 

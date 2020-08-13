@@ -33,9 +33,9 @@ public class DataServiceImpl implements DataService{
 		return dataList!=null?dataList.get(dataList.size()-1).getId():"";
 	}
 
-	public void InsertData(Data data) {
+	public Data InsertData(Data data) {
 		dataDao.InsertData(data);
-//		dataDao.FindDataByTitleAndContentAndUId(data.getTitle(), data.getDcontent(), data.getU_id());
+		return data;
 	}
 
 	public void UpdateDataAnsnum(String dataID, int ansnum) {
