@@ -11,11 +11,11 @@ import com.lmj.service.AnswerService;
 import com.lmj.service.DataService;
 
 
-@WebServlet("/DeleAnswerServlet")
+//@WebServlet("/DeleAnswerServlet")
 public class DeleAnswerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int delId = Integer.parseInt(request.getParameter("delId"));
-		int did = Integer.parseInt(request.getParameter("did"));
+		String delId = request.getParameter("delId");
+		String did = request.getParameter("did");
 		AnswerService answerService = new AnswerService();
 		answerService.DeleAnswerById(delId);
 		System.out.println("É¾³ý³É¹¦");

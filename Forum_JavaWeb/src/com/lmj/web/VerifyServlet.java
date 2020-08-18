@@ -25,7 +25,7 @@ public class VerifyServlet extends HttpServlet {
 				response.getWriter().append("{\"isSuccess\":"+!isEmpty+"}");
 				return;
 			}
-			boolean isExist = userService.isExistUserbyUsername(username);
+			boolean isExist = userService.IsExistUserbyUsername(username);
 			response.getWriter().append("{\"isSuccess\":"+!isExist+"}");
 		}
 		

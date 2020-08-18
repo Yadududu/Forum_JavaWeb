@@ -18,7 +18,7 @@
 		<div class="dvreg"></div>
 	</div>
 	<section class="sec">
-		<form action="${pageContext.request.contextPath }/LoginAction"
+		<form action="${pageContext.request.contextPath }/LoginAction_login"
 			method="post">
 			<div class="register-box">
 				<label for="username" class="username_label"> 用 户 名 

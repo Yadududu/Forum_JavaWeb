@@ -18,7 +18,7 @@
 			</s:if>
 			<s:else>
 				<s:property value="#session.user.username "/> 
-				<a href="logout.jsp"> 注销   </a>
+				<a href="${pageContext.request.contextPath }/LoginAction_logout"> 注销   </a>
 			</s:else>
 	</div>
 </div>

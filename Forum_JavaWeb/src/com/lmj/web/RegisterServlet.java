@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.lmj.model.User;
 import com.lmj.service.UserService;
+import com.lmj.util.SystemAttribute;
 
 //@WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
@@ -55,7 +56,8 @@ public class RegisterServlet extends HttpServlet {
 			request.getRequestDispatcher("/register.jsp").forward(request, response);
 			return;
 		}
-
+		
+		user.setId(SystemAttribute.getUUID());
 		boolean temp = userService.InsertUser(user);
 		if (temp) {
 			System.out.println("×¢²á³É¹¦");

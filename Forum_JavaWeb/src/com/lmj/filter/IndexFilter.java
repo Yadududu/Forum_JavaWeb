@@ -9,11 +9,9 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 
 import com.lmj.model.Data;
 import com.lmj.service.DataService;
-import com.lmj.service.UserService;
 
 //@WebFilter("/IndexFilter")
 public class IndexFilter implements Filter {
@@ -30,6 +28,7 @@ public class IndexFilter implements Filter {
 		System.out.println("读取数据库,获取datas");
 		DataService dataService = new DataService();
 		List<Data> datas = dataService.FindAllData();
+//		datas.forEach(data->System.out.println(data));
 		
 //		UserService userService = new UserService();
 //    	datas.forEach(data->data.setUsername(userService.FindUsernamebyId(data.getU_id())));

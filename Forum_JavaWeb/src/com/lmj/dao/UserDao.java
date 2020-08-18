@@ -64,12 +64,12 @@ public class UserDao {
 		}
 		return temp;
 	}
-	public User FindUserbyId(Integer id) {
+	public User FindUserbyId(String userID) {
 		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
 		String sql = "Select * From user where id=?";
 		User temp = null;
 		try {
-			temp = runner.query(sql, new BeanHandler<User>(User.class),id);
+			temp = runner.query(sql, new BeanHandler<User>(User.class),userID);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -103,10 +103,10 @@ public class UserDao {
 //		return false;
 		
 		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
-		String sql = "insert into user(username,password,phonenum) value(?,?,?)";
+		String sql = "insert into user(id,username,password,phonenum) value(?,?,?,?)";
 		int temp = 0;
 		try {
-			temp = runner.update(sql, user.getUsername(),user.getPassword(),user.getPhonenum());
+			temp = runner.update(sql, user.getId(),user.getUsername(),user.getPassword(),user.getPhonenum());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -140,7 +140,7 @@ public class UserDao {
 //		return false;
 		
 		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
-		String sql = "Update User set password = ? where username = ? and phonenum = ?";
+		String sql = "Update user set password = ? where username = ? and phonenum = ?";
 		int temp = 0;
 		try {
 			temp = runner.update(sql, user.getPassword(),user.getUsername(),user.getPhonenum());
@@ -150,4 +150,5 @@ public class UserDao {
 		}
 		return temp;
 	}
+	
 }

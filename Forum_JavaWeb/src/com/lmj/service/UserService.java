@@ -10,7 +10,7 @@ public class UserService {
 		User u = userDao.FindUserbyUsernameAndPassword(user.getUsername(),user.getPassword());
 		return u!=null?u:null;
 	}
-	public boolean isExistUserbyUsername(String username) {
+	public boolean IsExistUserbyUsername(String username) {
 		UserDao userDao = new UserDao();
 		User user = userDao.FindUserbyUsername(username);
 		return user!=null?true:false;
@@ -33,10 +33,10 @@ public class UserService {
 		return temp==0?false:true;
 	}
 	
-	public String FindUsernamebyId(Integer id) {
+	public String FindUsernamebyId(String userID) {
 		UserDao userDao = new UserDao();
-		User user= userDao.FindUserbyId(id);
+		User user= userDao.FindUserbyId(userID);
 		return user.getUsername();
 	}
-
+	
 }

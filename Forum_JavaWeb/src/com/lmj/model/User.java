@@ -2,7 +2,7 @@ package com.lmj.model;
 
 public class User {
 
-	private Integer id;
+	private String id;
 	private Boolean admin;
 	private String username;
 	private String password;
@@ -16,11 +16,11 @@ public class User {
 		this.admin = admin;
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -53,6 +53,5 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", admin=" + admin + ", username=" + username + ", password=" + password
 				+ ", phonenum=" + phonenum + "]";
-	}
-	
+	}	
 }

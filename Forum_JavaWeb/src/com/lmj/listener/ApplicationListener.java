@@ -4,11 +4,9 @@ import java.util.List;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import javax.servlet.annotation.WebListener;
 
 import com.lmj.model.Data;
 import com.lmj.service.DataService;
-import com.lmj.service.UserService;
 
 //@WebListener
 public class ApplicationListener implements ServletContextListener {
@@ -37,5 +35,5 @@ public class ApplicationListener implements ServletContextListener {
 //			System.out.println(data.id+","+data.username+","+ data.title + "," + data.content + "," + data.ansnum + "," + data.u_id);
 //		}
     }
-	
+    
 }

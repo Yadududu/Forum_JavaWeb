@@ -18,6 +18,30 @@
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.lmj.web.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleAnswerServlet</servlet-name>
+    <servlet-class>com.lmj.web.DeleAnswerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleAnswerServlet</servlet-name>
+    <url-pattern>/DeleAnswerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleDataServlet</servlet-name>
+    <servlet-class>com.lmj.web.DeleDataServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleDataServlet</servlet-name>
+    <url-pattern>/DeleDataServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>RegisterServlet</servlet-name>
     <servlet-class>com.lmj.web.RegisterServlet</servlet-class>
   </servlet>
@@ -102,9 +126,6 @@
     <filter-name>IndexFilter</filter-name>
     <url-pattern>/index.jsp</url-pattern>
   </filter-mapping>
-  <listener>
-    <listener-class>com.lmj.listener.ApplicationListener</listener-class>
-  </listener>
   <listener>
     <listener-class>com.lmj.listener.SessionListener</listener-class>
   </listener>

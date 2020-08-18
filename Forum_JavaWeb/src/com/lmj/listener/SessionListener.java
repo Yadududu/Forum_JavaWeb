@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSessionBindingEvent;
 import com.lmj.model.User;
 import com.lmj.util.SessionManager;
 
+
 //@WebListener
 public class SessionListener implements HttpSessionAttributeListener {
 

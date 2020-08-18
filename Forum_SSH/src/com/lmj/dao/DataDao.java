@@ -19,7 +19,7 @@ public class DataDao {
 //		query.addEntity(Data.class);
 //		List<Data> dataList = query.list();
 		
-		String sql = "SELECT * FROM data";
+		String sql = "SELECT * FROM data ORDER BY data.dtime DESC";
 		NativeQuery query = session.createSQLQuery(sql);
 		query.addEntity(Data.class);
 		List<Data> dataList = query.list();
@@ -41,9 +41,10 @@ public class DataDao {
 	}
 
 
-	public void InsertData(Data data) {
+	public Data InsertData(Data data) {
 		Session session = HibernateUtils.getCurrentSession();
 		session.save(data);
+		return data;
 	}
 	public void DeleData(Data data) {
 		Session session = HibernateUtils.getCurrentSession();

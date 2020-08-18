@@ -58,11 +58,32 @@ public class DataDao {
 		
 		
 		
+//		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
+//		String sql = "SELECT user.username,data.id,data.title,data.dcontent,data.ansnum,data.u_id FROM user join data on user.id = data.u_id;";
+//		List<Data> datas = new ArrayList<Data>();
+//		try {
+//			datas = runner.query(sql, new BeanListHandler<Data>(Data.class));
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return datas;
+		
 		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
-		String sql = "SELECT user.username,data.id,data.title,data.dcontent,data.ansnum,data.u_id FROM user join data on user.id = data.u_id;";
+		String sql1 = "SELECT * FROM data ORDER BY data.dtime DESC";
+		String sql2 = "SELECT * FROM user where id=?";
 		List<Data> datas = new ArrayList<Data>();
 		try {
-			datas = runner.query(sql, new BeanListHandler<Data>(Data.class));
+			datas = runner.query(sql1, new BeanListHandler<Data>(Data.class));
+			datas.forEach(data->{
+				try {
+					User user = runner.query(sql2, new BeanHandler<User>(User.class), data.getU_id());
+					data.setUser(user);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,12 +91,26 @@ public class DataDao {
 		return datas;
 	}
 
-	public Data FindDatabyId(int dataID) {
+	public Data FindDatabyId(String dataID) {
+//		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
+//		String sql = "SELECT user.username,data.id,data.title,data.dcontent,data.ansnum,data.u_id FROM user join data on user.id = data.u_id where data.id=?;";
+//		Data data = new Data();
+//		try {
+//			data = runner.query(sql, new BeanHandler<Data>(Data.class), dataID);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return data;
+		
 		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
-		String sql = "SELECT user.username,data.id,data.title,data.dcontent,data.ansnum,data.u_id FROM user join data on user.id = data.u_id where data.id=?;";
+		String sql1 = "SELECT * FROM data where data.id=?";
+		String sql2 = "SELECT * FROM user where id=?";
 		Data data = new Data();
 		try {
-			data = runner.query(sql, new BeanHandler<Data>(Data.class), dataID);
+			data = runner.query(sql1, new BeanHandler<Data>(Data.class), dataID);
+			User user = runner.query(sql2, new BeanHandler<User>(User.class), data.getU_id());
+			data.setUser(user);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -86,22 +121,22 @@ public class DataDao {
 
 	public int InsertData(Data data) {
 		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
-		String sql = "insert into data(title,dcontent,ansnum,u_id) value(?,?,?,?);";
+		String sql = "insert into data(id,dtime,title,dcontent,ansnum,u_id) value(?,?,?,?,?,?);";
 		int temp = 0;
 		try {
-			temp = runner.update(sql,  data.getTitle(), data.getDcontent(), data.getAnsnum(), data.getU_id());
+			temp = runner.update(sql, data.getId(),data.getDtime(),data.getTitle(), data.getDcontent(), data.getAnsnum(), data.getU_id());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return temp;
 	}
-	public List<Data> FindDatabyTitleAndContentAndUId(String title,String content,Integer uid) {
+	public List<Data> FindDatabyTitleAndContentAndUId(String title,String content,String UserID) {
 		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
 		String sql = "SELECT * FROM data where title=? and dcontent=? and u_id=?;";
 		List<Data> datas = new ArrayList<Data>();
 		try {
-			datas = runner.query(sql, new BeanListHandler<Data>(Data.class), title,content,uid);
+			datas = runner.query(sql, new BeanListHandler<Data>(Data.class), title,content,UserID);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -109,12 +144,12 @@ public class DataDao {
 		return datas;
 	}
 
-	public int UpdateDataAnsnum(Integer id, int ansnum) {
+	public int UpdateDataAnsnum(String dataID, int ansnum) {
 		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
 		String sql = "update data set ansnum=? where id=?;";
 		int temp = 0;
 		try {
-			temp = runner.update(sql, ansnum, id);
+			temp = runner.update(sql, ansnum, dataID);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -122,16 +157,17 @@ public class DataDao {
 		return temp;
 	}
 
-	public int DeleDataById(int id) {
+	public int DeleDataById(String dataID) {
 		QueryRunner runner = new QueryRunner(MySqlUtil.GetDataSource());
 		String sql = "delete from data where id=?;";
 		int temp = 0;
 		try {
-			temp = runner.update(sql, id);
+			temp = runner.update(sql, dataID);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return temp;
 	}
+	
 }

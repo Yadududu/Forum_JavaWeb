@@ -25,7 +25,7 @@
 			</c:when>
 			<c:otherwise>
 				${user.username } 
-				<a href="logout.jsp"> 注销   </a>
+				<a href="${pageContext.request.contextPath }/LogoutServlet"> 注销   </a>
 			</c:otherwise>
 		</c:choose>
 	</div>

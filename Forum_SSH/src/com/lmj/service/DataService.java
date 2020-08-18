@@ -51,15 +51,16 @@ public class DataService {
 		
 		return dataList!=null?dataList.get(dataList.size()-1).getId():"";
 	}
-	public void InsertData(Data data) {
+	public Data InsertData(Data data) {
 		DataDao dataDao = new DataDao();
 		Transaction transaction = HibernateUtils.getCurrentSession().beginTransaction();
 		try {
-			dataDao.InsertData(data);
+			data = dataDao.InsertData(data);
 		}catch(Exception e) {
 			transaction.rollback();
 		}
 		transaction.commit();
+		return data;
 	}
 	public void DeleDataById(String dataID) {
 		DataDao dataDao = new DataDao();

@@ -20,7 +20,7 @@
 			</c:when>
 			<c:otherwise>
 				${user.username } 
-				<a href="logout.jsp"> 注销   </a>
+				<a href="${pageContext.request.contextPath }/LogoutServlet"> 注销   </a>
 			</c:otherwise>
 		</c:choose>
 	</div>
@@ -57,8 +57,8 @@
 							<div class="quesUser">
 								<image src="images/0.gif" class="imguser" />
 								<div class="userName">
-									${data.username }
-									<div class="liulan"></div> 
+									${data.user.username }
+									<div class="liulan">${data.dtime }</div> 
 									<c:if test="${user.admin==true }"> 
 										<a href="${pageContext.request.contextPath }/DeleDataServlet?delId=${data.id }" class="layui-btn layui-btn-danger layui-btn-small">删除</a>
 									</c:if>

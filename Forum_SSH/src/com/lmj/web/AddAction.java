@@ -3,8 +3,6 @@ package com.lmj.web;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.springframework.web.context.support.WebApplicationContextUtils;
-
 import com.lmj.model.Data;
 import com.lmj.model.User;
 import com.lmj.service.DataService;
@@ -22,18 +20,17 @@ public class AddAction extends ActionSupport implements ModelDriven<Data>{
 		User user = (User)ActionContext.getContext().getSession().get("user");
 		data.setU_id(user.getId());
 		Date date=new Date(System.currentTimeMillis());
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String time = format.format(date);
 		data.setDtime(time);
 		
 		DataService dataService = new DataService();
-		dataService.InsertData(data);
-		String id = dataService.FindDataIdbyData(data);
-		if(id=="") {
+		data = dataService.InsertData(data);
+		if(data.getId()=="") {
 			System.out.println("发布失败");
 			return "fail";
 		}else {
-			ActionContext.getContext().put("id", id);
+			ActionContext.getContext().put("id", data.getId());
 			System.out.println("发布成功");
 			return "success";
 		}

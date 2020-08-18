@@ -12,6 +12,7 @@ import com.lmj.model.User;
 import com.lmj.service.AnswerService;
 import com.lmj.service.DataService;
 import com.lmj.service.UserService;
+import com.lmj.util.SystemAttribute;
 
 //@WebServlet("/DetailSubmitServlet")
 public class DetailSubmitServlet extends HttpServlet {
@@ -19,9 +20,11 @@ public class DetailSubmitServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Answer answer = new Answer();
+		answer.setId(SystemAttribute.getUUID());
+		answer.setAtime(SystemAttribute.getTime());
 		answer.setAcontent(request.getParameter("content"));
 		answer.setU_id(((User) request.getSession().getAttribute("user")).getId());
-		answer.setD_id(Integer.parseInt(request.getParameter("id").toString()));
+		answer.setD_id(request.getParameter("id").toString());
 		
 //		System.out.println(answer.getContent()+","+answer.getUsername()+","+answer.getD_id() );
 		

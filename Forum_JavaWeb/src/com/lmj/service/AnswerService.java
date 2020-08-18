@@ -7,7 +7,7 @@ import com.lmj.model.Answer;
 
 public class AnswerService {
 
-	public List<Answer> FindAllAnswer(int dataID) {
+	public List<Answer> FindAllAnswer(String dataID) {
 		AnswerDao answerDao = new AnswerDao();
 		return answerDao.FindAllAnswer(dataID);
 	}
@@ -17,9 +17,9 @@ public class AnswerService {
 		int temp = answerDao.InsertAnswer(answer);
 		return temp==0?false:true;
 	}
-	public void DeleAnswerById(int id) {
+	public void DeleAnswerById(String answerID) {
 		AnswerDao answerDao = new AnswerDao();
-		answerDao.DeleAnswerById(id);
+		answerDao.DeleAnswerById(answerID);
 	}
 	
 }

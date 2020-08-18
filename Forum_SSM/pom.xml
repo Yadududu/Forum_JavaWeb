@@ -122,7 +122,6 @@
 			</dependency>
 			<!-- json end -->
 		</dependencies>
-
 	</dependencyManagement>
 
 	<dependencies>
@@ -200,24 +199,26 @@
 			<type>jar</type>
 		</dependency>
 
-		<!-- <dependency> <groupId>cn.easyproject</groupId> <artifactId>ojdbc7</artifactId> 
-			<version>${ojdbc7.version}</version> </dependency> -->
+<!-- 		<dependency>  -->
+<!-- 			<groupId>cn.easyproject</groupId>  -->
+<!-- 			<artifactId>ojdbc7</artifactId>  -->
+<!-- 			<version>${ojdbc7.version}</version>  -->
+<!-- 		</dependency> -->
 		<!-- mysql end -->
 
 		<!-- 阿里巴巴的数据库连接池 -->
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>druid</artifactId>
-			<version>${druid.version}</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.alibaba</groupId> -->
+<!-- 			<artifactId>druid</artifactId> -->
+<!-- 			<version>${druid.version}</version> -->
+<!-- 		</dependency> -->
 
 		<!-- aop -->
-		<dependency>
-			<groupId>aopalliance</groupId>
-			<artifactId>aopalliance</artifactId>
-			<version>${aopalliance.version}</version>
-		</dependency>
-
+<!-- 		<dependency> -->
+<!-- 			<groupId>aopalliance</groupId> -->
+<!-- 			<artifactId>aopalliance</artifactId> -->
+<!-- 			<version>${aopalliance.version}</version> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>com.springsource.org.aspectj.weaver</artifactId>
@@ -226,8 +227,11 @@
 		<!-- aop end -->
 
 		<!-- logging -->
-		<!-- <dependency> <groupId>org.apache.commons</groupId> <artifactId>com.springsource.org.apache.commons.logging</artifactId> 
-			<version>${commons.logging.version}</version> </dependency> -->
+		<!-- <dependency> 
+				<groupId>org.apache.commons</groupId> 
+				<artifactId>com.springsource.org.apache.commons.logging</artifactId> 
+				<version>${commons.logging.version}</version> 
+			</dependency> -->
 
 		<!-- jsp标准标签库 -->
 		<dependency>
@@ -255,11 +259,11 @@
 		<!-- log end -->
 
 		<!--文件上传 -->
-		<dependency>
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-			<version>${fileupload.version}</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>commons-fileupload</groupId> -->
+<!-- 			<artifactId>commons-fileupload</artifactId> -->
+<!-- 			<version>${fileupload.version}</version> -->
+<!-- 		</dependency> -->
 
 		<!-- json -->
 		<dependency>
@@ -298,7 +302,6 @@
 			<version>${jsp-api.version}</version>
 			<scope>provided</scope>
 		</dependency>
-
 	</dependencies>
 
 	<build>

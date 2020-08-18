@@ -15,7 +15,7 @@ import com.lmj.model.Data;
 import com.lmj.service.DataService;
 import com.lmj.service.UserService;
 
-@WebFilter("/IndexFilter")
+//@WebFilter("/IndexFilter")
 public class IndexFilter implements Filter {
 
     public IndexFilter() {

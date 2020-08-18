@@ -28,6 +28,7 @@ public class MySqlUtil {
 			e.printStackTrace();
 		}
 	}
+	
 	public static Connection GetConnection() {
 		try {
 			return ds.getConnection();

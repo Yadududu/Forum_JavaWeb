@@ -19,7 +19,7 @@ public class AnswerDao {
 //		query.addEntity(Answer.class);
 //		List<Answer> answetList = query.list();
 		
-		String sql = "select * from answer where d_id=?;";
+		String sql = "select * from answer where d_id=? order by answer.atime";
 		NativeQuery query = session.createSQLQuery(sql);
 		query.setParameter(1, dataID);
 		query.addEntity(Answer.class);

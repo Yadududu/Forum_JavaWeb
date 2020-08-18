@@ -24,7 +24,7 @@ public class DetailSubmitAction extends ActionSupport implements ModelDriven<Ans
 		HttpParameters paras = ActionContext.getContext().getParameters();
 		answer.setD_id(paras.get("id").toString());
 		Date date = new Date(System.currentTimeMillis());
-		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String time = format.format(date);
 		answer.setAtime(time);
 		

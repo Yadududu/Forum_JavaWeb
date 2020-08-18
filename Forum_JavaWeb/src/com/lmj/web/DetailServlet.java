@@ -21,7 +21,7 @@ public class DetailServlet extends HttpServlet {
 	//读取数据库帖子和回答信息
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int dataID = Integer.parseInt(request.getParameter("id").toString());
+		String dataID = request.getParameter("id").toString();
 		AnswerService answerService = new AnswerService();
 		List<Answer> answers = answerService.FindAllAnswer(dataID);
 		
