@@ -11,8 +11,8 @@
 <meta name="keywords" content="fly,layui,前端社区">
 <meta name="description"
 	content="">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/res/layui/css/layui.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/res/css/global.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layui.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/global.css">
 <!-- <script src="res/layui/layui.js"></script> -->
 <!-- <script src="js/jquery.js"></script> -->
 <style type="text/css" rel="stylesheet">
@@ -49,7 +49,7 @@ form {
 <!-- 					</div> -->
 					<div class="detail-about">
 						<div class="jie-user" href=""> 
-							<img src="${pageContext.request.contextPath }/res/images/uer.jpg" alt="头像"> 
+							<img src="${pageContext.request.contextPath }/images/uer.jpg" alt="头像"> 
 								<cite> ${data.user.username } <em>${data.dtime } 发布</em> </cite>  </div>
 								<c:if test="${user.admin }"> 
 									<div class="detail-hits" data-id="{{rows.id}}">
@@ -76,7 +76,7 @@ form {
 							<a name="item-121212121212"></a>
 							<div class="detail-about detail-about-reply">
 								<a class="jie-user" href=""> 
-								<img src="${pageContext.request.contextPath }/res/images/uer.jpg" alt=""> 
+								<img src="${pageContext.request.contextPath }/images/uer.jpg" alt=""> 
 								<cite> 
 									<i>${answer.user.username }</i>
 <!-- 										<em>(楼主)</em> -->
@@ -130,7 +130,7 @@ form {
 		</div>
 
 	</div>
- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath }/res/js/kindeditor.js"></script>
+ <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath }/js/kindeditor.js"></script>
   <script type="text/javascript">
     KE.show({
         id : 'L_content',

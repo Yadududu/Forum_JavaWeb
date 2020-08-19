@@ -11,8 +11,8 @@
 <meta name="keywords" content="fly,layui,前端社区">
 <meta name="description"
 	content="">
-<link rel="stylesheet" href="res/layui/css/layui.css">
-<link rel="stylesheet" href="res/css/global.css">
+<link rel="stylesheet" href="css/layui.css">
+<link rel="stylesheet" href="css/global.css">
 <!-- <script src="res/layui/layui.js"></script> -->
 <!-- <script src="js/jquery.js"></script> -->
 <style type="text/css" rel="stylesheet">
@@ -130,7 +130,7 @@ form {
 		</div>
 
 	</div>
- <script type="text/javascript" charset="utf-8" src="res/js/kindeditor.js"></script>
+ <script type="text/javascript" charset="utf-8" src="js/kindeditor.js"></script>
   <script type="text/javascript">
     KE.show({
         id : 'L_content',

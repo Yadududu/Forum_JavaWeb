@@ -5,9 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>找回密码</title>
-<link rel="stylesheet" type="text/css" href="css/login.css" />
 <link rel="stylesheet" href="css/head.css" />
-<link rel="stylesheet" type="text/css" href="css/login.css" />
+<link rel="stylesheet" href="css/login.css" />
 </head>
 
 <body>
@@ -56,6 +55,5 @@
 			</div>
 		</form>
 	</section>
-	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

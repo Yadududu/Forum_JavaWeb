@@ -6,7 +6,7 @@
 <head>
 <title>小小论坛</title>
 <meta charset="utf-8" />
-<link rel="stylesheet" type="text/css" href="css/index.css">
+<link rel="stylesheet" href="css/index.css">
 </head>
 <div class="dvhead">
 	<div class="dvlogo">

@@ -39,5 +39,6 @@ SSM(Spring+SpringMVC+Mybatis)
 		自定义了Exception页面
 	数据库使用mybatis操作数据库
 		其中User,Data,Answer三个表分别配置了一对多,多对一的关系
+		刷新首页查询数据库开启了2级缓存
 	使用了Maven搭建，已经打包并发布，发布地址：http://ssmforum.mylmj.club/
 ```

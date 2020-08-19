@@ -9,11 +9,9 @@
   <title>发起话题</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" href="css/head.css"/>
-  <link rel="stylesheet" href="layui/css/layui.css">
-
-<link rel="stylesheet" href="css/global.css">
-
-<script src="layui/layui.js"></script>
+  <link rel="stylesheet" href="css/layui.css">
+  <link rel="stylesheet" href="css/global.css">
+  <script src="js/layui.js"></script>
 </head>
 <body >
 
@@ -74,22 +72,5 @@
         'insertunorderedlist', 'emoticons', 'image', 'link']
     });
   </script>
-<script>
-
-layui.cache.page = '';
-layui.cache.user = {
-  username: '游客'
-  ,uid: -1
-  ,avatar: '../res/images/avatar/00.jpg'
-  ,experience: 83
-  ,sex: '男'
-};
-layui.config({
-  version: "2.0.0"
-  ,base: '../res/mods/'
-}).extend({
-  fly: 'index'
-}).use('fly');
-</script>
 </body>
 </html>
