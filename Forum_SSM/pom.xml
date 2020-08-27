@@ -124,7 +124,7 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<dependencies>
+	<dependencies>	
 		<!-- spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

@@ -49,7 +49,7 @@ form {
 <!-- 					</div> -->
 					<div class="detail-about">
 						<div class="jie-user" href=""> 
-							<img src="res/images/uer.jpg" alt="头像"> 
+							<img src="images/uer.jpg" alt="头像"> 
 								<cite> ${data.user.username } <em>${data.dtime } 发布</em> </cite>  </div>
 								<s:if test="#session.user.admin">
 									<div class="detail-hits" data-id="{{rows.id}}">
@@ -76,7 +76,7 @@ form {
 							<a name="item-121212121212"></a>
 							<div class="detail-about detail-about-reply">
 								<a class="jie-user" href=""> 
-								<img src="res/images/uer.jpg" alt=""> 
+								<img src="images/uer.jpg" alt=""> 
 								<cite> 
 									<i>${answer.user.username }</i>
 <!-- 										<em>(楼主)</em> -->

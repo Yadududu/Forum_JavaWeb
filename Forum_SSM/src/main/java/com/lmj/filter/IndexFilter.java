@@ -50,7 +50,7 @@ public class IndexFilter implements Filter {
 		List<Data> datas = dataService.FindAllData();
 //		datas.forEach(data->System.out.println(data));
 
-		request.getServletContext().setAttribute("initDatas", datas);
+		request.setAttribute("initDatas", datas);
 		chain.doFilter(request, response);
 	}
 

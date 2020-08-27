@@ -36,6 +36,7 @@ public class IndexFilter implements Filter {
 //    	datas.forEach(data->System.out.println(data));
     	request.getServletContext().setAttribute("initDatas", datas);
 		chain.doFilter(request, response);
+		
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {

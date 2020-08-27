@@ -21,6 +21,8 @@ public class MySqlUtil {
 			ds.setJdbcUrl("jdbc:mysql:///forum?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=UTC");
 			ds.setUser("root");				
 			ds.setPassword("root");		
+			ds.setTestConnectionOnCheckin(true);
+			ds.setIdleConnectionTestPeriod(28800);
 				
 			ds.setInitialPoolSize(5);		
 			ds.setMaxPoolSize(20);		

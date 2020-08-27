@@ -167,7 +167,7 @@ public class UserController {
 			int a=10/0;
 		}catch(Exception e) {
 			e.printStackTrace();
-			throw new CustomException("404");
+			throw new CustomException("系统出错了！");
 		}
 	}
 }
