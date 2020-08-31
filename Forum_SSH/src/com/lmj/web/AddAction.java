@@ -1,0 +1,49 @@
+package com.lmj.web;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.lmj.model.Data;
+import com.lmj.model.User;
+import com.lmj.service.DataService;
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+
+public class AddAction extends ActionSupport implements ModelDriven<Data>{
+	
+	@Autowired
+	private DataService dataService;
+	private Data data = new Data();
+	
+	public String execute() throws Exception {
+		
+		data.setAnsnum(0);
+		User user = (User)ActionContext.getContext().getSession().get("user");
+		data.setU_id(user.getId());
+		Date date=new Date(System.currentTimeMillis());
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String time = format.format(date);
+		data.setDtime(time);
+		
+		data = dataService.InsertData(data);
+		if(data.getId()=="") {
+			System.out.println("发布失败");
+			return "fail";
+		}else {
+			ActionContext.getContext().put("id", data.getId());
+			System.out.println("发布成功");
+			return "success";
+		}
+		
+	}
+
+
+	@Override
+	public Data getModel() {
+		return data;
+	}
+	
+}
