@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    					http://www.springframework.org/schema/beans/spring-beans.xsd 
+                        http://www.springframework.org/schema/context 
+                        http://www.springframework.org/schema/context/spring-context.xsd  
+                        http://www.springframework.org/schema/aop 
+                        http://www.springframework.org/schema/aop/spring-aop.xsd 
+                        http://www.springframework.org/schema/tx 
+                        http://www.springframework.org/schema/tx/spring-tx.xsd ">
+
+	<context:component-scan base-package="com.lmj" ></context:component-scan>
+
+	<!-- 读取db.properties文件 -->
+	<context:property-placeholder location="classpath:db.properties" />
+	<!-- 配置c3p0连接池 -->
+	<bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driver}"/>
+		<property name="jdbcUrl" value="${jdbc.url}"/>
+		<property name="user" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+		<!-- 初始化连接大小 -->
+        <property name="initialPoolSize" value="${jdbc.initialSize}"></property>
+        <!-- 连接池最大数量 -->
+        <property name="maxPoolSize" value="${jdbc.maxIdle}"></property>
+        <property name="minPoolSize" value="${jdbc.minIdle}"></property>
+        <!--acquireIncrement：链接用完了自动增量2个。 -->
+        <property name="acquireIncrement" value="${jdbc.acquireIncrement}"></property>
+        <!--acquireRetryAttempts：链接失败后重新试30次。-->
+    	<property name="acquireRetryAttempts" value="${jdbc.acquireRetryAttempts}"></property>
+    	<!--//下面两个属性就是设置c3p0隔28800秒自动检测与数据库的连接（28800也是mysql的默认的连接超时时间）-->
+		<property name="testConnectionOnCheckin" value="${jdbc.testConnectionOnCheckin}"></property>
+		<property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"></property>
+	</bean>
+	
+	<!-- 加载配置方案1:仍然使用外部的hibernate.cfg.xml配置信息 -->
+	<!-- 
+	<bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" >
+	    <property name="configLocation" value="classpath:hibernate.cfg.xml" ></property> 
+	</bean>
+	> -->
+	
+	<!-- 加载配置方案2:在spring配置中放置hibernate配置信息 -->
+	<bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<!-- 将连接池注入到sessionFactory, hibernate会通过连接池获得连接 -->
+	    <property name="dataSource" ref="dataSource"></property>
+		<!-- 配置hibernate基本信息 -->
+	    <property name="hibernateProperties">
+		<props>
+			<!-- 必选配置 -->
+			<!-- 
+		    <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop> 
+		    <prop key="hibernate.connection.url" >jdbc:mysql:///crm_32</prop> 
+		    <prop key="hibernate.connection.username">root</prop> 
+		    <prop key="hibernate.connection.password" >root</prop>
+			> -->
+		    <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+			<!-- 可选配置 -->
+		    <prop key="hibernate.show_sql">true</prop>
+		    <prop key="hibernate.format_sql">true</prop>
+		    <prop key="hibernate.hbm2ddl.auto">update</prop>
+		</props>
+		</property>
+		<!-- 引入orm元数据,指定orm元数据所在的包路径,spring会自动读取包中的所有配置 -->
+		<property name="mappingDirectoryLocations" value="classpath:com/lmj/model"></property>
+	</bean>
+
+
+	<!-- 配置Spring声明式事务 -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean> 
+    <!-- 配置事务事务属性 -->
+     <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="Insert*" isolation="DEFAULT"  propagation="REQUIRED" read-only="false"/>
+			<tx:method name="Delete*" isolation="DEFAULT"  propagation="REQUIRED" read-only="false"/>
+			<tx:method name="Update*" isolation="DEFAULT"  propagation="REQUIRED" read-only="false"/>
+			<tx:method name="Find*" isolation="DEFAULT"  propagation="REQUIRED" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+    <!-- 配置事务切点，并把切点和事务属性关联起来 -->
+    <aop:config>
+        <aop:pointcut expression="execution(* com.lmj.service.*Service.*(..))" id="txPc"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPc"/>
+    </aop:config>
+    
+    	
+<!-- 	<bean name="userService" class="com.lmj.service.UserService"></bean> -->
+<!-- 	<bean name="dataService" class="com.lmj.service.DataService"></bean> -->
+<!-- 	<bean name="answerService" class="com.lmj.service.AnswerService"></bean> -->
+	
+<!-- 	<bean name="answerDao" class="com.lmj.dao.AnswerDao"></bean> -->
+<!-- 	<bean name="dataDao" class="com.lmj.dao.DataDao"></bean> -->
+<!-- 	<bean name="userDao" class="com.lmj.dao.UserDao"></bean> -->
+	<!-- action -->
+	<!-- 注意:Action对象作用范围一定是多例的,这样才符合struts2架构 -->
+<!-- 	<bean name="addAction" class="com.lmj.web.AddAction"> -->
+<!-- 	    <property name="dataService" ref="dataService"></property> -->
+<!-- 	</bean> -->
+<!-- 	<bean name="deleAction" class="com.lmj.web.DeleAction"> -->
+<!-- 	    <property name="answerService" ref="answerService"></property> -->
+<!-- 	    <property name="dataService" ref="dataService"></property> -->
+<!-- 	</bean> -->
+<!-- 	<bean name="detailAction" class="com.lmj.web.DetailAction"> -->
+<!-- 	    <property name="answerService" ref="answerService"></property> -->
+<!-- 	    <property name="dataService" ref="dataService"></property> -->
+<!-- 	</bean> -->
+<!-- 	<bean name="detailSubmitAction" class="com.lmj.web.DetailSubmitAction"> -->
+<!-- 	    <property name="answerService" ref="answerService"></property> -->
+<!-- 	    <property name="dataService" ref="dataService"></property> -->
+<!-- 	</bean> -->
+<!-- 	<bean name="findPasswordAction" class="com.lmj.web.FindPasswordAction"> -->
+<!-- 	    <property name="userService" ref="userService"></property> -->
+<!-- 	</bean> -->
+<!-- 	<bean name="registerAction" class="com.lmj.web.RegisterAction"> -->
+<!-- 	    <property name="userService" ref="userService"></property> -->
+<!-- 	</bean> -->
+<!-- 	<bean name="verifyAction" class="com.lmj.web.VerifyAction"> -->
+<!-- 	    <property name="userService" ref="userService"></property> -->
+<!-- 	</bean> -->
+
+</beans>
