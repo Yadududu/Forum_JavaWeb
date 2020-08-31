@@ -12,7 +12,7 @@ JavaWeb
 	数据库使用c3p0连接池连接Mysql数据库,使用dbutils工具读取数据
 	已经打包并发布，发布地址：http://forum.mylmj.club/
 	
-SSH(Struts+Hibernate)
+SSH(Spring+Struts+Hibernate)
 	使用了监听器(Listener)
 		做了单点登录
 	使用了过滤器(Filter)
@@ -41,4 +41,7 @@ SSM(Spring+SpringMVC+Mybatis)
 		其中User,Data,Answer三个表分别配置了一对多,多对一的关系
 		刷新首页查询数据库开启了2级缓存
 	使用了Maven搭建，已经打包并发布，发布地址：http://ssmforum.mylmj.club/
+
+Forum_StrutsAndHibernate(Struts+Hibernate)
+	功能和SSH一样,只是没有整合Spring
 ```
